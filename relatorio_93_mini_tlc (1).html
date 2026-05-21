@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>93º Mini TLC — Relatório de Avaliação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #1B3F94;
+    --blue-deep: #142F71;
+    --blue-soft: #E8EDF9;
+    --pink: #E63946;
+    --pink-deep: #C42B37;
+    --pink-soft: #FCE7E9;
+    --cream: #FAF7F2;
+    --paper: #FFFFFF;
+    --ink: #1A1A2E;
+    --ink-soft: #5C6178;
+    --line: #E5E2DA;
+    --gold: #D4A53E;
+    --green: #2D8068;
+    --shadow-sm: 0 1px 2px rgba(20,47,113,.04), 0 2px 6px rgba(20,47,113,.05);
+    --shadow: 0 4px 12px rgba(20,47,113,.06), 0 12px 32px rgba(20,47,113,.08);
+    --shadow-lg: 0 20px 48px rgba(20,47,113,.14);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(at 8% 12%, rgba(27,63,148,.04) 0, transparent 50%),
+      radial-gradient(at 92% 88%, rgba(230,57,70,.04) 0, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%);
+    color: white;
+    padding: 56px 32px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 360px; height: 360px;
+    background: var(--pink);
+    border-radius: 50%;
+    opacity: .14;
+    filter: blur(40px);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 240px; height: 240px;
+    background: var(--pink);
+    border-radius: 50%;
+    opacity: .08;
+    filter: blur(30px);
+  }
+  .header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .logo-mark {
+    width: 140px; height: 140px;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 24px 48px rgba(0,0,0,.28);
+    position: relative;
+    flex-shrink: 0;
+    background: white;
+  }
+  .logo-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .header-text { flex: 1; }
+  .header-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .32em;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,.7);
+    margin-bottom: 12px;
+  }
+  .header-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(48px, 7vw, 92px);
+    line-height: .95;
+    letter-spacing: .01em;
+    margin: 0;
+    color: white;
+  }
+  .header-title .num { color: var(--pink); display: inline-block; }
+  .header-verse {
+    margin-top: 22px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(18px, 2vw, 22px);
+    color: rgba(255,255,255,.94);
+    max-width: 640px;
+    line-height: 1.4;
+  }
+  .header-verse-ref {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-style: normal;
+    font-size: 13px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    font-weight: 600;
+  }
+
+  /* ===== NAV TABS ===== */
+  .nav-wrap {
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    position: sticky; top: 0;
+    z-index: 10;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    gap: 4px;
+  }
+  .tab {
+    background: none;
+    border: 0;
+    padding: 22px 28px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+    position: relative;
+    transition: color .25s ease;
+    letter-spacing: -.01em;
+  }
+  .tab:hover { color: var(--ink); }
+  .tab.active { color: var(--blue); }
+  .tab.active::after {
+    content: '';
+    position: absolute;
+    left: 28px; right: 28px;
+    bottom: 0;
+    height: 3px;
+    background: var(--pink);
+    border-radius: 2px 2px 0 0;
+  }
+
+  /* ===== MAIN ===== */
+  main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  .panel { display: none; animation: fadeUp .5s ease both; }
+  .panel.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== SECTION ===== */
+  .section-eyebrow {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .28em;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--pink);
+  }
+  .section-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1;
+    letter-spacing: .005em;
+    margin: 8px 0 6px;
+    color: var(--blue-deep);
+  }
+  .section-sub {
+    color: var(--ink-soft);
+    font-size: 16px;
+    margin: 0 0 36px;
+    max-width: 720px;
+  }
+
+  /* ===== STAT CARDS ===== */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .stat-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card.accent { background: var(--blue); color: white; border-color: var(--blue-deep); }
+  .stat-card.pink { background: var(--pink); color: white; border-color: var(--pink-deep); }
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-weight: 600;
+    opacity: .7;
+    margin-bottom: 8px;
+  }
+  .stat-card.accent .stat-label,
+  .stat-card.pink .stat-label { opacity: .85; color: white; }
+  .stat-value {
+    font-family: 'Anton', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: .01em;
+  }
+  .stat-card .stat-value { color: var(--blue-deep); }
+  .stat-card.accent .stat-value,
+  .stat-card.pink .stat-value { color: white; }
+  .stat-foot {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .stat-card.accent .stat-foot,
+  .stat-card.pink .stat-foot { color: rgba(255,255,255,.85); }
+
+  /* ===== TEAM PICKER ===== */
+  .team-picker {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+    padding: 8px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    width: fit-content;
+  }
+  .team-btn {
+    background: transparent;
+    border: 0;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all .2s ease;
+    letter-spacing: -.005em;
+  }
+  .team-btn:hover { color: var(--ink); background: var(--cream); }
+  .team-btn.active {
+    background: var(--blue);
+    color: white;
+    box-shadow: 0 6px 14px rgba(27,63,148,.25);
+  }
+
+  /* ===== RATING GROUP ===== */
+  .ratings-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 56px;
+  }
+  .rating-group {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+  }
+  .rating-group-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 22px;
+    margin: 0 0 4px;
+    color: var(--blue-deep);
+    letter-spacing: -.01em;
+  }
+  .rating-group-sub {
+    color: var(--ink-soft);
+    font-size: 13px;
+    margin: 0 0 22px;
+  }
+  .rating-row { margin-bottom: 18px; }
+  .rating-row:last-child { margin-bottom: 0; }
+  .rating-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+    font-size: 14px;
+    gap: 16px;
+  }
+  .rating-label-text { font-weight: 500; color: var(--ink); }
+  .rating-label-pct {
+    font-family: 'Anton', sans-serif;
+    color: var(--blue);
+    letter-spacing: .02em;
+    font-size: 18px;
+  }
+  .rating-bar {
+    height: 16px;
+    border-radius: 9px;
+    overflow: hidden;
+    display: flex;
+    background: var(--cream);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.04);
+  }
+  .seg {
+    height: 100%;
+    transition: width .8s cubic-bezier(.22,1,.36,1), filter .15s ease, transform .15s ease;
+    position: relative;
+    cursor: help;
+    transform-origin: center bottom;
+  }
+  .seg:hover {
+    filter: brightness(1.15) saturate(1.1);
+  }
+  .seg.lovedit { background: linear-gradient(90deg, var(--blue) 0%, #2C58B8 100%); }
+  .seg.liked { background: linear-gradient(90deg, #6E8DD9 0%, #9AB1E5 100%); }
+  .seg.neutral { background: linear-gradient(90deg, #D4A53E 0%, #E8C570 100%); }
+  .seg.negative { background: linear-gradient(90deg, var(--pink) 0%, #F26B76 100%); }
+  .seg.na { background: linear-gradient(90deg, #B8B5AC 0%, #D2CFC4 100%); }
+
+  /* ===== TOOLTIP ===== */
+  .seg-tooltip {
+    position: fixed;
+    background: var(--ink);
+    color: white;
+    padding: 9px 13px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.3;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, calc(-100% - 10px));
+    transition: opacity .15s ease;
+    z-index: 1000;
+    box-shadow: 0 8px 24px rgba(0,0,0,.25), 0 2px 6px rgba(0,0,0,.15);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .seg-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--ink);
+  }
+  .seg-tooltip.show { opacity: 1; }
+  .seg-tooltip .tip-concept {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .seg-tooltip .tip-stats {
+    display: block;
+    opacity: .85;
+    font-size: 11.5px;
+    font-weight: 400;
+  }
+  .seg-tooltip .tip-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: baseline;
+  }
+  .seg-tooltip.lovedit .tip-dot { background: #6E8DD9; }
+  .seg-tooltip.liked .tip-dot { background: #9AB1E5; }
+  .seg-tooltip.neutral .tip-dot { background: #E8C570; }
+  .seg-tooltip.negative .tip-dot { background: #F26B76; }
+  .seg-tooltip.na .tip-dot { background: #D2CFC4; }
+  .rating-legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+  .legend-dot {
+    display: inline-block;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  .legend-dot.lovedit { background: var(--blue); }
+  .legend-dot.liked { background: #9AB1E5; }
+  .legend-dot.neutral { background: var(--gold); }
+  .legend-dot.negative { background: var(--pink); }
+  .legend-dot.na { background: #B8B5AC; }
+  .legend-master {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    padding: 14px 20px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  /* ===== QBT CARDS ===== */
+  .qbt-section {
+    margin-top: 48px;
+  }
+  .qbt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .qbt-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 28px;
+    cursor: pointer;
+    transition: all .25s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .qbt-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .qbt-card.bom::before { background: var(--blue); }
+  .qbt-card.pena::before { background: var(--pink); }
+  .qbt-card.tal::before { background: var(--gold); }
+
+  .qbt-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(27,63,148,.3);
+  }
+  .qbt-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 18px;
+  }
+  .qbt-tag {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+  .qbt-card.bom .qbt-tag { background: var(--blue-soft); color: var(--blue-deep); }
+  .qbt-card.pena .qbt-tag { background: var(--pink-soft); color: var(--pink-deep); }
+  .qbt-card.tal .qbt-tag { background: #FBF1D8; color: #8C6A1E; }
+  .qbt-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 28px;
+    margin: 8px 0 4px;
+    line-height: 1;
+    letter-spacing: -.01em;
+  }
+  .qbt-card.bom .qbt-title { color: var(--blue-deep); }
+  .qbt-card.pena .qbt-title { color: var(--pink-deep); }
+  .qbt-card.tal .qbt-title { color: #8C6A1E; }
+  .qbt-count {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .qbt-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .qbt-list li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .qbt-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+  .qbt-card.bom .qbt-list li::before { background: var(--blue); }
+  .qbt-card.pena .qbt-list li::before { background: var(--pink); }
+  .qbt-card.tal .qbt-list li::before { background: var(--gold); }
+  .qbt-foot {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+    font-size: 12px;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .qbt-foot svg { width: 14px; height: 14px; }
+
+  /* ===== MODAL ===== */
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(20,30,55,.5);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 5vh 20px;
+    overflow-y: auto;
+    animation: fadeIn .25s ease;
+  }
+  .modal-backdrop.open { display: flex; }
+  @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+  .modal {
+    background: var(--paper);
+    border-radius: 24px;
+    max-width: 780px;
+    width: 100%;
+    box-shadow: 0 32px 80px rgba(0,0,0,.3);
+    overflow: hidden;
+    animation: slideUp .35s cubic-bezier(.2,.9,.3,1);
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .modal-head {
+    padding: 28px 32px 20px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .modal-head.bom { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%); color: white; }
+  .modal-head.pena { background: linear-gradient(135deg, var(--pink) 0%, var(--pink-deep) 100%); color: white; }
+  .modal-head.tal { background: linear-gradient(135deg, #D4A53E 0%, #8C6A1E 100%); color: white; }
+  .modal-tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-weight: 600;
+    opacity: .9;
+  }
+  .modal-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 32px;
+    margin: 4px 0 4px;
+    letter-spacing: -.01em;
+    line-height: 1;
+  }
+  .modal-sub { font-size: 13px; opacity: .85; }
+  .modal-close {
+    background: rgba(255,255,255,.18);
+    border: 0;
+    color: white;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    transition: background .2s;
+  }
+  .modal-close:hover { background: rgba(255,255,255,.32); }
+  .modal-body {
+    padding: 24px 32px 32px;
+    max-height: 65vh;
+    overflow-y: auto;
+  }
+  .modal-body::-webkit-scrollbar { width: 8px; }
+  .modal-body::-webkit-scrollbar-track { background: var(--cream); border-radius: 4px; }
+  .modal-body::-webkit-scrollbar-thumb { background: #C9C5BC; border-radius: 4px; }
+
+  .response-item {
+    padding: 16px 18px;
+    background: var(--cream);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    border-left: 3px solid transparent;
+  }
+  .response-item.bom { border-left-color: var(--blue); }
+  .response-item.pena { border-left-color: var(--pink); }
+  .response-item.tal { border-left-color: var(--gold); }
+  .response-item.cursistas-open { border-left-color: var(--blue); }
+  .response-num {
+    display: inline-block;
+    font-family: 'Anton', sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-right: 8px;
+    letter-spacing: .05em;
+  }
+
+  .modal-group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 22px 0 12px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -.005em;
+  }
+  .modal-group-header:first-child { margin-top: 0; }
+  .modal-group-header.bom { background: var(--blue-soft); color: var(--blue-deep); }
+  .modal-group-header.pena { background: var(--pink-soft); color: var(--pink-deep); }
+  .modal-group-header.tal { background: #FBF1D8; color: #8C6A1E; }
+  .modal-group-name { font-weight: 700; }
+  .modal-group-count {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    opacity: .75;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--blue-deep);
+    color: rgba(255,255,255,.7);
+    padding: 32px;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 64px;
+  }
+  footer .heart { color: var(--pink); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 720px) {
+    .header { padding: 40px 20px 56px; }
+    .header-inner { grid-template-columns: 1fr; gap: 28px; text-align: center; justify-items: center; }
+    .logo-mark { width: 96px; height: 96px; }
+    main { padding: 32px 20px 60px; }
+    .nav-inner { padding: 0 20px; overflow-x: auto; }
+    .tab { padding: 18px 16px; font-size: 14px; white-space: nowrap; }
+    .tab.active::after { left: 16px; right: 16px; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .stat-value { font-size: 42px; }
+    .modal-head { padding: 22px 22px 16px; }
+    .modal-title { font-size: 24px; }
+    .modal-body { padding: 18px 22px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo-mark">
+      <img src="data:image/png;base64,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" alt="Mini TLC Curitiba" />
+    </div>
+    <div class="header-text">
+      <div class="header-eyebrow">Relatório de Avaliação</div>
+      <h1 class="header-title"><span class="num">93º</span> Mini TLC</h1>
+      <p class="header-verse">
+        "Já não sou quem eu era, eu sou novo em Ti."
+        <br><span class="header-verse-ref">Romanos 12,4</span>
+      </p>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-wrap">
+  <div class="nav-inner">
+    <button class="tab active" data-tab="cursistas">Cursistas</button>
+    <button class="tab" data-tab="equipe">Equipe</button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ================ CURSISTAS PANEL ================ -->
+  <section class="panel active" id="panel-cursistas">
+    <div class="section-eyebrow">Visão dos participantes</div>
+    <h2 class="section-title">Cursistas</h2>
+    <p class="section-sub">Como os cursistas avaliaram cada momento do retiro, com destaques, observações e sugestões a partir de quem viveu o 93º Mini.</p>
+
+    <div class="stats-row" id="cursistas-stats"></div>
+
+    <div class="legend-master">
+      <strong style="color:var(--ink); font-weight:600;">Legenda:</strong>
+      <span><span class="legend-dot lovedit"></span>Gostei muito / Sim</span>
+      <span><span class="legend-dot liked"></span>Gostei / Suficiente</span>
+      <span><span class="legend-dot neutral"></span>Mais ou menos / Não me lembro</span>
+      <span><span class="legend-dot negative"></span>Não gostei</span>
+    </div>
+
+    <div class="ratings-grid" id="cursistas-ratings"></div>
+
+    <div class="qbt-section">
+      <div class="section-eyebrow">Síntese qualitativa</div>
+      <h3 class="section-title" style="font-size:clamp(28px,4vw,40px); margin-bottom: 24px;">O que ouvimos</h3>
+      <div class="qbt-grid" id="cursistas-qbt"></div>
+    </div>
+  </section>
+
+  <!-- ================ EQUIPE PANEL ================ -->
+  <section class="panel" id="panel-equipe">
+    <div class="section-eyebrow">Visão dos dirigentes</div>
+    <h2 class="section-title">Equipe</h2>
+    <p class="section-sub">Compilado das 4 equipes do retiro. Selecione um setor abaixo para ver os indicadores específicos.</p>
+
+    <div class="team-picker" id="team-picker">
+      <button class="team-btn active" data-team="Geral">Geral</button>
+      <button class="team-btn" data-team="Corredor">Corredor</button>
+      <button class="team-btn" data-team="Alicerce">Alicerce</button>
+      <button class="team-btn" data-team="Atletas">Atletas</button>
+      <button class="team-btn" data-team="Anjos">Anjos</button>
+    </div>
+
+    <div class="stats-row" id="team-stats"></div>
+
+    <div class="legend-master">
+      <strong style="color:var(--ink); font-weight:600;">Legenda:</strong>
+      <span><span class="legend-dot lovedit"></span>Gostei muito</span>
+      <span><span class="legend-dot liked"></span>Gostei</span>
+      <span><span class="legend-dot neutral"></span>Não me lembro / Mais ou menos</span>
+      <span><span class="legend-dot negative"></span>Não gostei</span>
+      <span><span class="legend-dot na"></span>Não participou</span>
+    </div>
+
+    <div class="ratings-grid" id="team-ratings"></div>
+
+    <div class="qbt-section">
+      <div class="section-eyebrow">Síntese qualitativa da equipe</div>
+      <h3 class="section-title" style="font-size:clamp(28px,4vw,40px); margin-bottom: 24px;" id="team-qbt-title">O que ouvimos das equipes</h3>
+      <div class="qbt-grid" id="team-qbt"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modal-bg">
+  <div class="modal">
+    <div class="modal-head" id="modal-head">
+      <div>
+        <div class="modal-tag" id="modal-tag"></div>
+        <h3 class="modal-title" id="modal-title"></h3>
+        <div class="modal-sub" id="modal-sub"></div>
+      </div>
+      <button class="modal-close" id="modal-close" aria-label="Fechar">×</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<footer>
+  93º Mini TLC — Relatório elaborado a partir das avaliações de cursistas e equipe.<br>
+  Já não sou quem eu era. <span class="heart">♥</span>
+</footer>
+
+<script>
+const DATA = {"cursistas":{"total":55,"grupos":{"Inscrição":[{"label":"Orientação do padrinho na inscrição","counts":{"Sim":52,"Mais ou menos, mas consegui preencher":2,"Mais ou menos, fiquei com algumas dúvidas.":1},"total":55}],"Momentos Gerais":[{"label":"Momentos de Capela","counts":{"Gostei Muito":50,"Gostei":5},"total":55},{"label":"Dinâmicas em grupo","counts":{"Gostei Muito":36,"Gostei":19},"total":55},{"label":"Teatros no refeitório","counts":{"Gostei Muito":50,"Gostei":5},"total":55},{"label":"Teatros na sala de paradas","counts":{"Gostei Muito":54,"Gostei":1},"total":55}],"Paradinhas (Sexta)":[{"label":"Lázaro (Dança + Paradinha)","counts":{"Gostei Muito":39,"Gostei":16},"total":55},{"label":"Paradinha do Joio e Trigo","counts":{"Gostei Muito":41,"Gostei":13,"Não gostei":1},"total":55},{"label":"Escolhas","counts":{"Gostei Muito":40,"Gostei":13,"Não entendi / Não me lembro":2},"total":55}],"Paradas e Palestras (Sábado)":[{"label":"Semeador","counts":{"Gostei Muito":40,"Não entendi / Não me lembro":3,"Gostei":12},"total":55},{"label":"Este Sou Eu","counts":{"Gostei Muito":43,"Gostei":11,"Não entendi / Não me lembro":1},"total":55},{"label":"Amizade","counts":{"Gostei Muito":48,"Gostei":7},"total":55},{"label":"Valores","counts":{"Gostei Muito":45,"Gostei":10},"total":55},{"label":"Eu no Mundo","counts":{"Gostei Muito":43,"Gostei":11,"Não gostei":1},"total":55},{"label":"Tempestade Acalmada","counts":{"Gostei Muito":40,"Não gostei":1,"Gostei":11,"Não entendi / Não me lembro":3},"total":55},{"label":"Família","counts":{"Gostei Muito":52,"Gostei":3},"total":55},{"label":"A Pessoa de Jesus","counts":{"Gostei Muito":47,"Gostei":7,"Não entendi / Não me lembro":1},"total":55},{"label":"Adoração","counts":{"Gostei Muito":51,"Gostei":4},"total":55}],"Momentos de Domingo":[{"label":"Paralítico","counts":{"Gostei Muito":38,"Não entendi / Não me lembro":2,"Gostei":15},"total":55},{"label":"Atuação do Jovem no Mundo","counts":{"Gostei Muito":46,"Gostei":9},"total":55},{"label":"Parada Atletas de Cristo","counts":{"Gostei Muito":54,"Gostei":1},"total":55}],"Acolhimento":[{"label":"Acolhimento dos dirigentes","counts":{"Sim, me senti muito acolhido e cuidado durante o retiro":49,"Me senti suficientemente acolhido e cuidado, foi normal":6},"total":55}]},"open_responses":["sugestão, eu trabalhar no mini","Foi muito incrível todos os momentos","os teatros foram incríveis, oque eu mais gostei foi os teatros, as dinâmicas em grupo, mas acho qur poderia ter momentos de partilha no final do dia pra que cada falasse sua opinião sobre o dia e etc","Como alguem que ja participou de alguns retiros e acampamentos, gostaria de agradecer a equipe, muito bem organizada e tudo muito bem feito, como cursista podíamos ver o carinho envolvido, obrigado!!","Foi um momento mágico que ficará na minha memória para sempre, me senti muito amada e acolhida, tanto pelas pessoas quanto por Deus! a equipe é maravilhosa, amei conhecer novas pessoas e ter uma visão de mundo diferente! PRA SEMPRE 93º MINI!!!💙❤️","Não mudaria nada só aperfeiçoaria oque tem já","Eu acredito que se houvesse um lugar pra sentar mais confortável na capela os momentos lá seriam bem melhores","Não trocaria nada, foi perfeitamente da forma que deveria ser, o humor trazia atenção as vezes para um assunto muito sério, coisa que funciona muito bem para adolescentes e jovens","foi perfeito, espero voltar mais vezes","Os teatros foram uma das melhores partes de todo o retiro, ajudaram a entender melhor e introduziram muito bem os temas.","Só que poderia durar mais, por que a saudade que dá quando sai é imensa","O retiro foi absolutamente incrível em todos os aspectos! Amei todos os momentos, e todas as pessoas que conheci. Foi tudo tão lindo e reconfortante, não tenho nada para reclamar.","foi incrível","Foi muito incrível todos os momentos","AMEI as paradinhas, na sexta eu tava meio confusa por ser tudo novo, mas comecei a entender a essência do rolê e aí amei demais!!","Foi incrível","foi incrível","talvez encurtar um pouco o momento da adoração pois escutei muita gente reclamando de dores nas costas e no bumbum, mas foi maravilhoso","A da família foi de chorar KKKKKKKK","Sábado eu já estava um pouco mais animada e consegui sentir de um jeito diferente, a palestra sobre família me tocou muito. O momento da adoração foi o melhor na minha opinião, senti muito o amor de Cristo!","Mesma coisa só aperfeiçoaria oque já tem","Foi ótimo para autoconhecimento, com autoconhecimento o coração ficou preparado para receber Jesus na adoração","foi incrível","Que incrível foi ver os Atletas de Cristooo","Domingo eu estava triste por ter que ir embora kkk, mas foi maravilhoso, criar uma etapa de uma missa me ensinou muito!","Só aperfeiçoar oque ja tem","Muito massa a parte do atletas de Cristo/entrega das camisas. Muito incrível a ideia de voces, parabéns.","Perfeito, quero ser atleta de cristo","foi incrível","Me senti muito cuidado vlw equipe","AMEI TODAS AS PESSOAS! todos foram muito simpáticos e acolhedores, amei todos","Pessoas muito incríveis adorei demais","Eu senti que TODOS da equipe estavam a minha disposição a qualquer momento pra eu conversar ou chorar e isso foi muito legal","Todos maravilhosos","foi incrível","Desde o comecinho do retiro me senti muito bem, nos receberam com muita atenção e carinho.","Fui com uma cabeça voltei com outra, estou muito feliz e realizada! Obrigada mini tlc❤️💙","Vocês são simplesmente incríveis, obrigada por serem meus amigos no retiro e fazer ele ser super especial"],"synth":{"que_bom":["Teatros foram um destaque: introduziram bem os temas com leveza e humor","Equipe percebida como acolhedora, atenta e disponível em todos os momentos","Forte sensação de transformação pessoal e espiritual relatada por muitos","Adoração, Família e Atletas de Cristo foram momentos especialmente tocantes","Organização e carinho ficaram visíveis na vivência dos cursistas","Mescla de paradinhas, dinâmicas e bom humor manteve a atenção do início ao fim"],"que_pena":["Tempo na capela em alguns momentos longos causou desconforto físico (dores nas costas)","Retiro curto demais — vários cursistas gostariam que durasse mais dias","Poucas críticas registradas (quase a totalidade dos comentários é positiva)"],"que_tal":["Avaliar conforto dos assentos da capela para momentos mais longos","Criar momentos de partilha ao final de cada dia para reflexão em grupo","Recolher os celulares dos cursistas já no bota-fora (sugestão de cursista)","Avaliar a duração da Adoração para minimizar o desconforto físico"]}},"teams":{"Corredor":{"total":25,"ratings":[{"label":"Conteúdo das reuniões","original_label":"Sobre o conteúdo das reuniões:","counts":{"Não participei das reuniões":1,"Gostei":13,"Gostei muito":11},"total":25},{"label":"Espiritualidade das reuniões","original_label":"Sobre a espiritualidade das reuniões:","counts":{"Não participei das reuniões":1,"Gostei":11,"Não gostei":1,"Gostei muito":12},"total":25},{"label":"Integração nas reuniões","original_label":"Sobre a integração nas reuniões:","counts":{"Não participei das reuniões":1,"Gostei":13,"Gostei muito":9,"Não gostei":2},"total":25},{"label":"Animação nas reuniões","original_label":"Sobre a animação nas reuniões:","counts":{"Não participei das reuniões":1,"Gostei":15,"Não gostei":2,"Gostei muito":7},"total":25},{"label":"Tempo de duração das reuniões","original_label":"Sobre o tempo de duração das reuniões:","counts":{"Não participei das reuniões":1,"Achei o tempo de duração ideal":18,"Achei longas demais":5,"Achei curtas demais":1},"total":25},{"label":"Seu desempenho","original_label":"Sobre o seu desempenho:","counts":{"Gostei muito":11,"Gostei":14},"total":25},{"label":"Trabalho realizado pela sua equipe","original_label":"Sobre o trabalho realizado pela sua equipe:","counts":{"Gostei muito":15,"Achei mais ou menos":2,"Gostei":8},"total":25},{"label":"Entrosamento com seus parceiros de função","original_label":"Sobre o entrosamento com seus parceiros de função:","counts":{"Gostei Muito":15,"Achei mais ou menos":4,"Gostei":6},"total":25},{"label":"Presença da equipe (sala de paradas, capela, grupos e outros)","original_label":"Sobre a presença da equipe (sala de paradas, capela, grupos e outros):","counts":{"Gostei Muito":10,"Achei mais ou menos":5,"Gostei":9,"Não gostei":1},"total":25},{"label":"Espiritualidade no retiro","original_label":"Sobre a espiritualidade no retiro:","counts":{"Gostei Muito":15,"Achei mais ou menos":1,"Gostei":9},"total":25},{"label":"Entrosamento da equipe","original_label":"Sobre o entrosamento da equipe:","counts":{"Gostei Muito":14,"Gostei":10,"Achei mais ou menos":1},"total":25},{"label":"Cuidados com os cursistas","original_label":"Sobre o cuidados com os cursistas:","counts":{"Gostei Muito":18,"Gostei":7},"total":25}],"que_bom":["gostei muito do momento de espiritualidade na capela do alicerce, achei que fez diferença, e amei estar no corredor pela primeira vez, ver a carinha dos cursistas, conversar com eles e poder levar um pouquinho de amor por meio das coisas simples","O entrosamento da equipe.","Que o retiro aconteceu","Eu adorei cada parte do retiro, a cada trabalho que faço pelo mini meu amor pelo movimento cresce mais e mais. Adorei do fundo do meu coração trabalhar de capela !!","Gostei muito da espiritualidade do alicerce, foi um dos momentos mais especiais pra mim, e que senti muuuuito a presença do Espírito Santo","Que vi rostinhos novos no corredor, que bom que o grupo trabalhou bem entrosado (de forma geral) que bom que tivemos um grupo de cursistas muito bom","Que bom que os cursistas estavam animados. Que bom que a comunicação entre a equipe estava boa. Que bom que a equipe do corredor estava entrosada. Que bom que levamos todos os momentos com bom humor. Que bom que a reitoria do alicerce fez um ótimo trabalho.","que houveram mudanças nas vidas dos cursistas e dos dirigentes","Foi um retiro maravilhoso, estava tudo perfeito, a comida estava deliciosa, a equipe estava introsada, mesmo com todos os problemas que aconteceram antes do retiro entre os articuladores, no retiro isso não transpareceu, pareceram conectados, foi massa demais!!! Tive que mudar de função ali nos finalmentes para ajudar as meninas da secretaria e foi top demais, acho que conseguimos entregar um ótimo trabalho, estou saindo bem feliz desde retiro! Articuladores escolheram MUITO BEM a equipe e paradeiros!!!","Depois de tudo que rolou na preparação, achei ok a sinergia dos articuladores, fizeram o que precisava ser feito e ficou muito bom o retiro como um todo!","Momentos de espiritualidade: Entrega e Agradecimento; Comida Maravilhosa! Tudo perfeito!","Tudo foi incrível, cada momento tem seu valor 🤍","Que bom que os articuladores [nome] ram atenciosos e receptivos com todos os dirigentes. Que bom que tivemos uma secretária organizada e empenhada esse ano, que bom que tivemos bons coordenadores de equipes externa e uma ótima reitoria. Que bom que tivemos uma espiritualidade fazendo um bom trabalho nas reuniões, que bom que tivemos uma boa equipe de capela, que bom que tivemos uma boa equipe de copa e decoração, que bom que tivemos bons cozinheiros, que bom que tivemos uma boa equipe de bem estar, que bom que tivemos uma entrada linda da equipe do atletas e que bom que o final do retiro deu certo.","Que a equipe e os cursistas estavam muito animados, participando e interagindo bastante","Que bom que houve suporte desde o início, conexão na equipe e organização prévia. Que bom que, de fato, o 93 gerou transformação na vida dos cursistas.","que estive lá, que estive com pessoas que foram boas e me apoiaram na caminhada","Que pude fazer uma função nova","ação social","Que bom que os cursistas estavam participativos, que num geral a equipe estava se ajudando, que os momentos e paradas foram bons","Que esse retiro foi vivido de tal forma tão linda","A equipe está bem sintonia e coesa","Que o objetivo foi alcançado os cursistas ficaram maravilhados com o retiro","Gostei muito do trabalho dos bem estares. Da equipe de espiritualidade Da minha equipe de folk, foi leve estar com eles.","Foi um final semana leve, mesmo com alguns probleminhas durante a preparação. No fim deu certo. Não consegui assisti todas as paradas, mas as que eu vi os cursistas se mostraram atentos e gostando. Foi o primeiro retiro que trabalhei esse ano e me senti bastante bem com a acolhida"],"que_pena":["que em alguns teatros a galera se passou um pouquinho 😬 (principalmente palavrões) mas de resto tudo top!","Que a equipe não estava tão comprometida em participar dos momentos, e mesmo tendo sido avisado, os dirigentes demoravam muito pra sair do refeitório, o cronograma atrasou, a ponteiro foi grossa por isso, momento final na capela ficou confuso e muita gente envolta na capela falando alto, e achei que faltou um pouco de todo mundo nessa parte","Que pena que não durou mais né kkk não tenho críticas a fazer para essa equipe de corredor maravilhosa","As pessoas (da equipe) conversavam muito durante as paradinhas, tirando um pouco da atenção dos cursistas","Que alguns momentos faltou organização dos materiais como parada de amizade e eu no mundo. Que as pessoas em alguns momentos se excedem por poucas coisas e pequenos atritos de função, ocorreu novamente no encerramento. Algumas pessoas pouco contribuiram com grupo, mas um numero pequeno mas infelizmente teve.","Que pena que durante os convites para o retiro muita gente não foi chamada. Muitos convites não foram repassados. Que pena que não teve venda de rifa para ajudar a pagar a taxa. Que pena que em muitas reuniões as pessoas que são de longe não vão, por causa da distância. Que pena que ainda não nos organizamos bem para que haja mais participação de todos nas reuniões (caronas, se aproximar dos minis, motivar e acompanhar). QUE PENA QUE EM MUITAS REUNIÕES DE PREPARAÇÃO OS MAIS EXPERIENTES FICAM CONVERSANDO NAS PANELAS E MAIS LONGE DOS MINIS FALTANDO ENTROSAMENTO. Que pena que algumas equipes de funções não se preparam tão bem com antecedência para o retiro. Que pena que alguns paradeiros deixam para preparar a fala em cima da hora. Que pena que não teve participação ativa de todas as pessoas que eram espiritualidades (do atletas, corredor, alicerce e anjos) durante a preparação do retiro. Que pena que faltou uma pessoa mais experiente na espiritualidade do corredor e nenhum deles já havia sido espiritualidade do corredor do mini. Que pena que falta cuidado as vezes uns com os outros, perguntar se está bem, conversar, dar um abraço.","que mesmo na essência, algumas coisas ainda se mantém, como conversas paralelas enquanto estão rolando as paradas/paradinhas, mas tbm se não estão conversando na sala ficam do lado de fora. Que alguns dirigentes, só entregam seus materiais nos dias do retiro.","Que pena que ao longo do processo tiveram vários problemas com a articulação, espero que o povo “de fora” não tenha percebido nada (acho que não perceberam), mas por eu acompanhar mais de perto, foi meio sofrido. Que pena que a reunião de lideranças foi super fraca, achei desnecessária no formato que aconteceu, não focaram no “importante” ali e passaram pano para várias situação. Entre amigos, conversamos e vimos que pelo menos 5 pessoas não tiveram seus papéis lidos. Acredito que se somos lideranças do setor, não tem ninguém que não poderia debater em uma conversa civilizada sobre o setor, não estamos ali justamente pra isso? Retiro é retiro, movimento é movimento, amizades a parte, tinham coisas que precisavam ter sido ditas e discutidas ali, e não foram, uma pena!!! Mais uma situação muito chata que aconteceu (quase aconteceu, na verdade), foi no final do retiro, onde a Ponteira que não era ligação, CG ou secretaria, novamente tentou interferir no encerramento. Mais uma vez, mais um ano, deu instruções onde não foi chamada. Quase que os pais precisaram ser “acelerados” igual ano passado, por instruções erradas vindo da parte dela. Alem de que ela ligou para seu marido que é CG e deu ordem para ele liberar a equipe do anjos na hora errada e todo mundo viu e ficou falando sobre!!! Acredito que independente de relações pessoais, ali dentro cada um tem que cuidar da sua função, para que tudo corra corretamente! Ainda bem que a coordenação do Anjos, ligação interna e secretaria estava em completa sincronia!","Que ainda insistimos em algumas pessoas que não tem compromisso nenhum com o movimento (inclusive ex articuladores do setor), em funções que requerem participação ativa, inclusão das novas lideranças, cuidado com as pessoas. Quando colocamos pessoas assim em funções chaves, sabemos que estamos sobrecarregando outras pessoas, ou nada a ver?","Muitas conversas altas, acaba tirando a concentração dos cursistas","Que pena que não tivemos uma articuladora tão receptiva e carinhosa, que pena que tivemos um Problema no final do retiro em relação a informações erradas em relação a entrada da equipe do anjos.","Que pena que na reunião de lideranças houve um pouco de omissão quanto às opiniões das lideranças do setor. Entendo que nem tudo é colocado no papel e o que foi escrito, não foi lido, mas acredito que todos temos maturidade para lidar com críticas construtivas, até porque dizem respeito ao trabalho e não ao pessoal. “Ah, mas nem tudo foi escrito no papel”, e de fato, não foi, porque em conversa com outras pessoas, algumas relataram receio em escrever, mas ainda assim sentiram as dores da desconexão da articulação. Se, talvez, tivéssemos discutido esses pontos, o setor se fortaleceria ainda mais e teria ainda mais maturidade para definir os próximos passos, auxiliando quem vem. Que pena que, mesmo cada um tendo sua função, ainda tenham pessoas tentando passar por cima de orientações vindas da cg e das próprias organizações finais do retiro. Mesmo com toda a organização e alinhamento entre secretaria, ligação interna, coordenação do anjos e a própria cg, a ponteira passou “ordens” ao pessoal do anjos sem estar na sala de paradas, vendo em que pé estava o momento com os pais, e sem estar alinhada com as equipes que já estavam verificando isso. A todo momento, falamos que as informações a serem repassada para os coordenadores, articuladores, são apenas as vindas pela equipe de ligação interna, e infelizmente não foi o que aconteceu no encerramento. A sorte foi que a ligação interna estava bastante atenta, ouviu as informações corretas e não adiantou o processo do final, conversando direto com a secretaria e coordenadora da equipe de anjos (que também achou bizarro terem passado por cima das informações corretas).","que outras pessoas se meteram em trabalho que não eram delas e quase deu cagada em alguns momentos","Que não deu tempo de fazer a adoração com o alicerce","tempo curto","Que pena que os chefinhos estavam um pouco distantes entre si e com a equipe","Que o tempo passou rápido","Muitos momentos de capela a equipe não estava preente","Que a presença de dirigentes na sala de parada foi mínima e quem estava alguns nos celulares,conversando ou em Nárnia","O que acabei não gostando foi \"perder\" duas paradas, uma por estar ajudando em outra função que estava desfalcada (por pessoas que estavam lá, mas fugiam do trabalho na cozinha) e outra por estar em interseção e acabei não tendo gancho para atuar nas divisões de grupo","O jantar de sábado a noite no alicerce sempre é bastante tumultuado. Pra nós que estávamos la dentro da cozinha é difícil e tem as pessoas do refeitório vindo buscar a comida. Fica uma loucura. As secretarias precisam ser mais atentas! Teve dois problemas que foram no eu no mundo onde o material precisava estar no grupo ( e foi orientado pelo paradeiro na sexta a noite) e ele só chegou bem depois do grupo iniciado. Isso causa transtorno e também pode afetar na condução, onde possivelmente algum cursista poderia se expressar de outra forma a não ser falando. No meu grupo foi assim. Outra questão foi a organização da dinâmica dos crachás, onde o primeiro e o último grupo se repetiram, e até onde eu lembre isso não pode acontecer. Precisa ter uma secretaria mais experiente e atenta. São coisas que prejudicam os momentos. Uma delas inclusive parece que entrou perto do retiro (??????????????????) E não adiantou de nada. Nao sou dos 3 setoes que organizaram esse retiro, mas quando vi que ex articulador responsável de função não foi nas reuniões e chegou apenas para o retiro, fica a muito feio isso! Alguns materiais fisicos e de orientação precisam ser atualizados As pessoas acham que não da pra perceber quando estão em cantos fazendo fofoca, Inclusive esposa grávida do articulador"],"que_tal":["Se as reuniões fossem mais diretas (achei que a espiritualidade falou demais e fez de menos, algumas pessoas reclamaram isso comigo também), mais dentro do horário, porque atrasava muito pra começar","Só uma ideia mesmo para questão dos celulares, não deixar os cursistas chegarem no cursilho com o celular, na hora que estiver pegando o nome dele no bota fora pedir já para entregar o celular.","Acho que não mudaria nada, foi maravilhoso","Manter aposta nos novos, intensificar os trabalhos de equipe das reuniões e tentar de alguma forma fazer o grupo participar mais da preparação.","Que tal se os articuladores pararem de chamar pessoas que sabem que não vão estar presente nas reuniões para funções chave? Que tal se haver mais cuidado na hora de repassar os convites para a equipe?? Que tal se tiver venda de rifa para ajudar no pagamento? Que tal se criarmos um grupo que cuida das caronas e do acompanhamento dos minis nas reuniões e eventos? Que tal se acontecer uma motivação maior para as pessoas participarem das reuniões de preparação? (Tipo um acompanhamento mais ativo por parte dos mais experientes de cada função chamando no particular as pessoas para a reunião). Que tal se a gente discutir as paradas e paradinhas do corredor em alguma reunião geral e também na reunião específica? (Para que exista mais possibilidades de pessoas presentes e conversando.) Que tal os mais experientes se juntarem mais com os minis nas reuniões gerais de preparação e integrarem? Que tal a articulação ouvir os mais experientes que estavam em função chave para ter um feedback de como foi a participação de algumas pessoas nas funções, paradinhas, reuniões e momentos??","Na função audiovisiual, melhorarem os descritivos da função em relação ao vídeo dos olhos, onde faltam algumas informações, links de vídeo de abertura, informações de tempo mínimo e máximo da duração do vídeo. Reuniões de pais serem feitas mais cedo, permitindo assim a preparação do vídeo mais cedo, capacitar melhor os padrinhos e quando os pais não puderem de alguma forma participar das reuniões, os padrinhos serem responsáveis pela filmagem e envio dos vídeos antes do RES. Pensar em estrutura melhor essa questão para facilitar a organização e certeza de quais pais fizeram as gravações.","Criar a função de carteira dentro do Mini, acho que a secretaria tem muitas demandas dentro da preparação, muitos detalhes a serem lembrados, retirar isso de dentro da função ajudaria bastante.","Pegar mais firme com toda a equipe sobre a participação nos grupos e nos momentos do retiro, sobre parar de mexer no celular inclusive NA FRENTE dos cursistas e também, sempre reforçar que algumas funções só acabam depois de organizar, limpar e voltar todas as coisas pro lugar? beiju queridos","Tomar mais cuidado em falar perto dos cursistas","Que tal pensar melhor sobre se os três articuladores tem “química” se os próximos articuladores vão ter tempo de verdade, disponibilidade de verdade, se vão ter compromisso de verdade. Que tal pensar melhor sobre o tempo das reuniões, que tal pensar melhor sobre algumas funções.","Que tal se existisse a função de carteira no retiro, assim como é no TLC. A secretaria do mini tem muitas demandas e facilitaria bastante se tivesse uma carteira, talvez no corredor mesmo. As cartas ainda poderiam ser direcionadas à secretaria, tendo em vista que há uma leitura prévia do que vem, mas a distribuição e organização poderiam ser de uma terceira pessoa.","da próxima vez explicar melhor a função de certas pessoas para não ocorrerem desvios","A equipe não demorar tanto nas trocas de cada ambiente","ter um tempinho para os atletas conversar e se divertir","Que tal melhorar o entrosamento entre os articuladores e articuladores com equipe? Que tal rever a necessidade da realização da confraternização entre corredor e alicerce ? O sábado é muito cansativo e percebe-se uma certa obrigação das pessoas em participarem mais pra não desapontar a equipe do que por vontade. Que tal se fossem feitas duas reuniões extras do corredor? Passar todo o cronograma apenas em uma reunião foi bem cansativo.","Termos mais rodas de conversas com os cursistas","Diminuir o uso do celular na frente dos cursistas","Orientação da importância de estar na sala de paradas e nos trabalhos em grupo","Sem menções","Não sei o que dizer"],"synth":{"que_bom":["Equipe entrosada e sintonizada, mesmo com problemas prévios na preparação","Bom trabalho da reitoria do Alicerce e dos coordenadores externos","Espiritualidade do Alicerce marcou muitos como um dos pontos altos","Sentimento de propósito alcançado: transformação visível nos cursistas","Receptividade dos articuladores e dedicação da secretaria","Comida elogiada como excelente em todos os momentos"],"que_pena":["Conversas paralelas durante paradas e paradinhas distraíram os cursistas","Reunião de lideranças vista como fraca, com sensação de “passar pano”","Encerramento conturbado por informações erradas vindas de fora das funções designadas","Pouca participação de alguns dirigentes em momentos-chave; uso de celular na frente dos cursistas","Materiais entregues em cima da hora; algumas funções pouco preparadas com antecedência","Faltou pessoa mais experiente na espiritualidade do corredor"],"que_tal":["Pegar firme sobre presença nos grupos e proibição de celular na frente dos cursistas","Repensar critérios de convite para funções-chave (compromisso real com a preparação)","Criar função de “carteira” para aliviar a secretaria (sugestão recorrente)","Mais cuidado na escolha e no entrosamento prévio do trio de articuladores","Acompanhamento ativo dos mais experientes para motivar e integrar os novos","Reuniões mais diretas e dentro do horário previsto"]}},"Alicerce":{"total":26,"ratings":[{"label":"Conteúdo das reuniões","original_label":"Sobre o conteúdo das reuniões:","counts":{"Gostei":13,"Gostei muito":8,"Não participei das reuniões":5},"total":26},{"label":"Espiritualidade das reuniões","original_label":"Sobre a espiritualidade das reuniões:","counts":{"Gostei":10,"Gostei muito":11,"Não participei das reuniões":5},"total":26},{"label":"Integração nas reuniões","original_label":"Sobre a integração nas reuniões:","counts":{"Gostei":13,"Gostei muito":7,"Não participei das reuniões":5,"Não gostei":1},"total":26},{"label":"Animação nas reuniões","original_label":"Sobre a animação nas reuniões:","counts":{"Gostei":15,"Gostei muito":4,"Não participei das reuniões":5,"Não entendi / Não lembro":1,"Não gostei":1},"total":26},{"label":"Tempo de duração das reuniões","original_label":"Sobre o tempo de duração das reuniões:","counts":{"Achei o tempo de duração ideal":18,"Não participei das reuniões":5,"Achei longas demais":3},"total":26},{"label":"Seu desempenho","original_label":"Sobre o seu desempenho:","counts":{"Gostei":10,"Gostei muito":15,"Achei mais ou menos":1},"total":26},{"label":"Trabalho realizado pela sua equipe","original_label":"Sobre o trabalho realizado pela sua equipe:","counts":{"Gostei":7,"Gostei muito":18,"Não gostei":1},"total":26},{"label":"Entrosamento com seus parceiros de função","original_label":"Sobre o entrosamento com seus parceiros de função:","counts":{"Gostei":7,"Gostei Muito":16,"Achei mais ou menos":2,"Não gostei":1},"total":26},{"label":"Participação em fervos e teatros","original_label":"Sobre a participação em fervos e teatros:","counts":{"Gostei":13,"Gostei Muito":12,"Achei mais ou menos":1},"total":26},{"label":"Espiritualidade no retiro","original_label":"Sobre a espiritualidade no retiro","counts":{"Gostei":11,"Gostei Muito":15},"total":26},{"label":"Entrosamento da equipe","original_label":"Sobre o entrosamento da equipe:","counts":{"Gostei":9,"Gostei Muito":16,"Achei mais ou menos":1},"total":26}],"que_bom":["Gostei de tudo","A harmonia da equipe, e todo o amor que era transmitido dentro do alicerce","Gostei muito do nosso tempo de qualidade juntos tanto na cozinha, quanto na capela , cada momento foi único , cada pessoa era única, o alicerce nunca mais vai ser o mesmo com as mesmas pessoas por isso acredito que todos nós vivemos intensamente esse retiro, foi trabalhoso? Demais , só que valeu muito a pena estar ali nesse final de semana , viver o alicerce não é fácil, não é só cortar estrela, colocar um prato, mas sim, doação, adoração e amor e isso vem de todos nós a um tempo ja! Foi único e incrível 💙❤️ [nome]","Foi um retiro muito leve, toda a equipe comprou a ideia","que estávamos em uma equipe bem ativa, que conseguimos participar de alguns momentos do corredor e com os cursistas. que a equipe estava agilizada e comprometida com a maioria das demandas, e mantermos os horários. que a comida estava muito boa","Alicerce com pessoas tranquilas e engajadas","Gostei muito do entrosamento das equipes, dos momentos de espiritualidade e paradinhas.","Que bom que tudo deu certo, Deus preparou tudo e todo mundo se ajudou","Foi leve.","Eu gostei muito de conhecer o mini foi uma experiência diferente. A equipe teve bom entrosamento.","Gostei muito da condução dos momentos, da mescla de experiência com novatos. Gostei muito do meu pedacinho do céu.","Pessoal MUITO dedicado, alicerce esta muito unido e todos ajudavam, mesmo que não fosse sua função, uma das primeiras vezes que encontro uma equipe assim e fiquei muito satisfeita. [nome] tinha muitas decorações e isso ajudou demais, pessoal da função também era bem dedicado e as coisas fluiram bem.","Dos momentos na capela","Muito boa a integração e entrega entre todos da equipe sempre dispostos a ajudará e colaborar em tudo","A integração entre os mais jovens e menos jovens!","Que tudo deu certo","Que bom que a equipe era muito boa e dedicada, mesmo com alguns imprevistos, tudo funcionou muito bem. Que bom que a espiritualidade conseguiu trazer o que foi falado nas reuniões para dentro do retiro, dando uma sensação de continuidade do tema. Que bom que a galera da minha função era muito dedicada e conseguimos fazer acontecer.","Que o trabalho como um todo fluiu e conseguimos fazer as coisas todas sem correria foi um trabalho tranquilo. Cardápio muito bom e fácil de executar, e com isso o trabalho foi bem menos difícil além de ser muito bom. Conseguiu ter tempo de descanso e intervalos de certa forma não sendo tão sugad Reitores foram incríveis, muito acolhedores, calmos e tranquilos em sincronia parecíamos uma família mesmo muito unidos todos","Gostei muito de estar na cozinha, não é a função que domino mas a gente faz o que pode kkkk","A comida estava muuito boaa","Que bom que minha equipe estava bem alinhada, não tivemos problema com louca graças a Deus kkkk todo mundo trabalhando com alegria, nem deu pra sentir cansaço. A reitoria também foi incrível, [nome] foram maravilhosos do começo ao fim! Nosso churras também foi muito bom!","Fervo, teatro, a espiritualidade um pouco de tudo","Que a equipe estava bem dedicada para um trabalho excepcional","Que tiveram pessoas responsáveis que não se omitiram das suas verdadeiras funções.","que a comida foi boa e teve para todos","Os chefes do alicerce foram muito cuidados com cada detalhe, sempre ali oferencendo ajuda, lavando louça, pedindo auxílio de quem tava parado na hora. Os momentos de capela foram lindos e emocionantes, a equipe de espiritualidade foi muito bem escolhida. Foi um alicerce leve, tava todo mundo entrosado, fluiu bem."],"que_pena":["Nada a declarar","Um pouco de ausência na questão das panelas","que acabou esse retiro maravilhoso","Não poder participar da sexta feira por conta do meu trabalho","que não tem uma função direcionada para a faxina, exemplo: faxina/bem estar. A cozinha fica bem úmida em tempos como esses e os banheiros também, por mais que a troca dos lixos e organização de algumas demandas esteja na função. Que o patrimônio do TLC estava bem bagunçado.","…","Não gostei que em alguns momentos as pessoas deixavam de ajudar ou não faziam sua função.","que pena que nós não podemos fazer isso toda semana","Na equipe tem momentos de altos e baixos...as pessoas se dispersam e isso acaba sobrecarregando alguns.","Eu compreendo que é importante todos se ajudarem embora cada um tenha sua função, mas em alguns momentos não é algo muito viável pegar um companheiro de outra equipe para ajudar e deixar a outra equipe desfalcada, sendo nescessário chamar o membro da equipe novamente para seu posto original e as vezes em um momento apurado.","Usar copo de plástico em vez de vidro no almoço e janta, por exemplo. Acredito que, pelo compromisso ambiental do próprio movimento (principalmente no tlc escolar, por exemplo, o cuidado com a casa comum) devemos usar os de vidro, mesmo que isso gere mais louça, pelo menos é menos lixo. Se for preciso eu mesma posso lavar se esse é o problema.","O crachá com os nomes deveria ser maior bem pequeno não dava pra ler o nome tirando a finalidade do crachá","que temos utensilios quebrados e em falta.","Que tem muito migué dentro da equipe, muitas vezes no momento da louça as pessoas não estavam engajadas.","Que pena que muitas vezes nos sentimos com pouca informação do que estava acontecendo no retiro. Que pena que o café da tarde de domingo ficou praticamente no mesmo horário da recepção do Atletas e dos Anjos, assim, a equipe ficou dividida entre organizar a cozinha pós almoço, fazer o café dos cursistas, recepcionar as equipes externas e montar a mesa de café para os pais. Que pena que não temos uma função para a faxina no alicerce, fez bastante falta.","Senti falta da articuladora ser um pouco mais presente e próxima da equipe, fazer mais visitas ao alicerce acolher os minis e a equipe como um todo com carinho e cuidado. Ligação interna faltou com algumas informações e teve muito desencontro de tempo pelo que percebi as informações demoraram um pouco a chegar em alguns momentos, principalmente na sexta.","Que nem todos se dedicaram a função, tinha que estar pedindo pra fazer ao invés de estar presente pra adiantarmos as tarefas e todos poder aproveitar os momentos de capela, teatro e até a chegada das casas,pq eu e a [nome] não conseguimos ir recebê-lo por estar terminando de organizar a cozinha,limpeza das bancadas e terminando de arrumar os lanches, também não se comprometeram em levar assessórios para agilizar os bolos.","Organização não estava em ordem principalmente antes do retiro. Não deixar só fresco na equipe de copa e decoração do alicerce. As roupas do pedacinho do céu não estavam limpas, estavam com cheiro de mofo e sujas. Os banheiros dos quartos não foram limpos nenhum dia durante o retiro, retirar o lixo não é limpeza.","Que pena que o retiro acabou 😭 kkkk mas de verdade agora, que pena que a cg ou melhor o [nome] age com soberba e trata os outros com grosseria, como se ele tivesse o rei na barriga. Sábado na janta eu entrei na cozinha antes de voltar pro refeitório pra jantar com os minis e ele estava gritando com a [nome] chamando ela de burra na mesa com todo mundo. Eu só tava passando e ouvi, e me senti constrangido, imagine quem estava na mesa também e ela né. Não sei qual era o contexto mas deu pra ver na cara dela que ela não gostou. Achei ridículo e como homem isso não deveria acontecer nem ser feito porque ele deveria ter respeito. Eu tenho certeza de que ele vai falar que estava brincando e que tem intimidade com ela, mas todo mundo sabe que ele passa pano pra ele mesmo continuar agindo assim com os outros. Sinto pena","Só da equipe se dedica-se mais para lavar a louça","Que não há mais quartos para uma melhor distribuição da equipe","Que tiveram pessoas que se omitiram de suas funções por talvez não gostar, ou julgar que é alguém tão importante que não deva exercer a função que lhe foi designado.","horários das refeições mto tarde, e sempre atrasados, falta de organização para as refeições da cozinha","Única coisa que eu achei assim foi que as reuniões de preparação foram um pouco longas e que o pessoal aqui do meu setor não participaram muito no res, sendo que foi aqui, ficou bem chato. E uma coisa que aconteceu no jantar de sábado foi uma fala do [nome] para uma pessoa, ele gritou “caralho [nome] você é muito burra” no meio da mesa de jantar, ela ficou super sem graça, sendo que ela só tinha alertado ele sobre uma pessoa postar uma foto de um momento e pra nao estragar o tudo está previsto. Eu acho que ninguém pode falar assim com ninguém, mas ele sendo coordenador geral muito menos, porque não adianta falar que foi brincadeira, ela ficou super constrangida na hora e todo mundo ficou meio em choque."],"que_tal":["Nada a declarar","Uma ajudinha a mais com os paneleiro, acho que deveria ter uns 3 pra tudo ocorrer melhor","Continuar na mesma pegada no próximo retiro","incluir a faxina, faz com que não sofram tanto na hora de cobrar e pedir a organização para a galera, e que seja realizada corretamente. Que todos os retiros também se responsabilizem para a organização antes de finalizar tudo para que os próximos possam chegar e saber onde estão as coisas.","…","Não tenho sujestão.","Senti falta de mais garrafas térmicas, principalmente por conta da quantidade de café e chá que foi utilizada no retiro.","Alguns ajustes nesse sentido que pode ser reforçados nas reuniões de preparação e nos momentos de capela.","A Louça é uma grande pedra no sapato, mas acredito que se conseguirmos definir um tempo médio de louça e um número médio de pessoas contribuindo (exemplo: 2 lavando, 6 secando), podemos determinar uma escala com equipes de louça predefinidas, desse modo não serão sempre as mesmas pessoas cuidando da louça e isso equilibra com outras atividades de equipe. Por exemplo se o tempo médio for 1 hora de louça, poderiam ser duas escalas de 30 min com duas equipes, assim acredito que não ficaria cansativo e evitaria frustração de alguns dirigentes que precisaram ficar mais tempo e mais vezes na louça de forma desproporcional a outros.","Uaar copo de vidro ao invés do de plástico. Ou fazer copo long neck com o nome dos cursistas pra deixar de crachá de mesa e já usa o copo.","Fazer o crachá com o nome maior só","Pedir opiniões as pessoas para marcar ou supor trocas desses utensilhos.","Talvez ter mais falas sobre o trabalho em equipe na parte mais braçal realmente.","Que tal atualizar os subsídios colocando uma parte de utensílios úteis para a função? Que tal aproveitar a nova sala de patrimônio para renovar os itens que ficam na casa? (batedeira simples, funil, mixer e outras coisas que sempre usam nas funções). Não relacionado com o Alicerce - O subsidio do vídeo dos olhos precisa ser revisto, seria bom deixar uma media de tempo e um vídeo de exemplo para a galera se basear na edição dos novos.","Não ter festa de noite, cansa muito a equipe do alicerce fora que está tendo pouca adesão a equipe toda não fica para esse momento e nem toda equipe do corredor vai, então acaba sendo desnecessário e cansativo como uma tarefa a mais e estender de mais o tempo que poderia ser de descanso. Os minis dão muito migue e somem por vezes, precisamos pensar em algo para que diminua esse tipo de situação.","Na próxima colocar pelo menos 4 TLC comprometido e um mini que esteja com vontade de ajudar,pq veio até uma pessoa do folk nos ajudar nas horas que não tinha que tocar.","Cortador de estrelas (por favor), vai ajudar muito a equipe de copa e decoração. A primeira reunião não coincidir com outras reuniões do movimento e não ser realizada em paróquia que está organizando pra festa. As lembrancinhas dos cursistas serem entregues todas na sexta-feira, facilita bastante. Ter um vídeo mais específico da dança do pedacinho do céu. Reforçar os mais novos a importância de participar das reuniões e das responsabilidades durante o retiro. Informar na primeira reunião quem vai ficar responsável por determinada função. Na primeira reunião além da entrega da função, ter um momento em equipe para se conhecermos e verificar quem está na mesma equipe, pois o grupo da equipe foi criado após a segunda reunião. No subsídio de função do responsável pela copa e decoração ter um informativo que tem um material do movimento que pode ser utilizado, assim o responsável pode ir atrás.","Não tenho o que colocar","Do horário de intercessão do Alicerce, pudesse usar a capela para interceder pelo nosso retiro","Se o momento da oração da noite do sábado estivesse de fato no cronograma do Alicerce","Ter mais clareza para as pessoas sobre qual função elas devem estar.","ter mais limpeza e organização na cozinha","As reuniões poderiam ser mais curtas, pelo menos o RES ou a parte de espiritualidade. Coordenação geral ter mais cuidado e respeito com as pessoas."],"synth":{"que_bom":["Equipe unida, leve e com forte espírito de família","Comida excelente; cardápio bem planejado e de execução tranquila","Reitoria do Alicerce elogiada por acolhimento, calma e cuidado","Momentos de capela tocantes; espiritualidade deu continuidade ao tema das reuniões","Mescla saudável de experientes e novatos na equipe","Bom entrosamento entre louça, cozinha, copa e decoração"],"que_pena":["Falta de uma função dedicada à faxina (banheiros e cozinha)","Patrimônio do TLC bagunçado; utensílios quebrados ou em falta","“Migué” e dispersão de algumas pessoas sobrecarregando outras, especialmente na louça","Pouca presença/proximidade da articuladora com a equipe no Alicerce","Desencontros de informação da ligação interna, principalmente na sexta","Episódio de fala agressiva da Coordenação Geral com membro da equipe na mesa de jantar"],"que_tal":["Criar função específica de faxina/limpeza dentro do Alicerce","Renovar utensílios do patrimônio (cortador de estrelas, batedeira, mixer, garrafas térmicas)","Trocar copos de plástico por vidro, alinhado ao compromisso ambiental do movimento","Definir escala fixa de louça em rodízio para distribuir melhor o trabalho","Maior cuidado e respeito da Coordenação Geral no trato com as pessoas","Reuniões de preparação mais curtas e bem distribuídas","Crachá com nome em fonte maior para facilitar a leitura"]}},"Atletas":{"total":70,"ratings":[{"label":"Conteúdo das reuniões","original_label":"Sobre o conteúdo das reuniões:","counts":{"Não entendi / Não lembro":1,"Gostei muito":41,"Gostei":18,"Não participei das reuniões":8,"Não gostei":2},"total":70},{"label":"Espiritualidade das reuniões","original_label":"Sobre a espiritualidade das reuniões:","counts":{"Gostei":18,"Gostei muito":44,"Não participei das reuniões":8},"total":70},{"label":"Integração nas reuniões","original_label":"Sobre a integração nas reuniões:","counts":{"Gostei":18,"Gostei muito":43,"Não participei das reuniões":9},"total":70},{"label":"Animação nas reuniões","original_label":"Sobre a animação nas reuniões:","counts":{"Não entendi / Não lembro":1,"Gostei muito":40,"Gostei":17,"Não participei das reuniões":9,"Não gostei":3},"total":70},{"label":"Tempo de duração das reuniões","original_label":"Sobre o tempo de duração das reuniões:","counts":{"Achei longas demais":3,"Achei o tempo de duração ideal":54,"Não participei das reuniões":10,"Achei curtas demais":3},"total":70},{"label":"Seu desempenho","original_label":"Sobre o seu desempenho:","counts":{"Gostei muito":41,"Achei mais ou menos":2,"Gostei":27},"total":70},{"label":"Trabalho realizado pela sua equipe","original_label":"Sobre o trabalho realizado pela sua equipe:","counts":{"Gostei muito":52,"Achei mais ou menos":3,"Gostei":14,"Não gostei":1},"total":70},{"label":"Entrosamento com seus parceiros de função","original_label":"Sobre o entrosamento com seus parceiros de função:","counts":{"Gostei":13,"Gostei Muito":47,"Achei mais ou menos":7,"Não gostei":3},"total":70},{"label":"Paradas e paradinhas que vocês viveram","original_label":"Sobre as paradas e paradinhas que vocês viveram:","counts":{"Gostei":14,"Gostei Muito":56},"total":70},{"label":"Espiritualidade no retiro","original_label":"Sobre a espiritualidade no retiro:","counts":{"Gostei Muito":57,"Gostei":13},"total":70},{"label":"Ação social que foi realizada","original_label":"Sobre a ação social que foi realizada:","counts":{"Gostei Muito":60,"Não pude participar":5,"Gostei":5},"total":70},{"label":"Entrosamento da equipe","original_label":"Sobre o entrosamento da equipe:","counts":{"Gostei":10,"Gostei Muito":60},"total":70}],"que_bom":["Tudo","a alegria contagiante de todos","Que a equipe desempenharam um bom papel","Achei muito bom tudo, como todos foram tocados, estavam unidos, nos momentos de Espiritualidade muitos choraram pois se entregaram de verdade!","Que o mini 93 aconteceu","Que a gente saiu transformado","A construção dos temas foram muitos profundos e de reflexão","Um retiro muito bom primeiro mini que eu trabalhei gostei muito","que foi muito organizado, todos conversaram e escolheram o que era melhor para a equipe, vivemos um retiro em conjunto, ninguem maior ou melhor que ninguém.","gostei muito de tudo!!! cada detalhe foi perfeito, nada de ruim a dizer sobre a organização do retiro.","A adoração e a missa foi oq eu mas gostei","Os temas das paradas","Que bom que a maioria das coisas ocorreram perfeitamente","Que sentimos confortáveis sentimos amados por todos","Foi participar do atletas","A equipe estava bem entrosada, um clima muito agradável, todos conseguindo se sentir em casa.","Gostei de todo o retiro, tudo perfeito,","Que deu para desfrutar cada momento","que temos a ação social e frescos dispostos a fazer acontecer","Esse final de semana participei de um retiro de três dias e foi simplesmente maravilhoso. Foi uma experiência muito especial e marcante pra mim em todos os sentidos. A comida estava muito boa, a equipe foi incrível, extremamente acolhedora e dedicada, e toda a espiritualidade vivida nesses dias foi algo que me tocou profundamente. Sinceramente, nunca tinha me sentido tão tocada quanto me senti nesse retiro. A ação social na Casa dos Idosos também foi algo muito forte e especial pra mim. Foi um momento que mexeu muito com meu coração e me fez refletir sobre tantas coisas. Tudo foi lindo: as pessoas, a coordenação, os momentos vividos, as experiências compartilhadas… Sou muito grata por tudo que vivi nesses dias. Foi um final de semana inesquecível e muito abençoado.","Que aconteceu","A ação social foi linda conhecer, brincar e escutar aquelas histórias foi incrível, a forma como a equipe estava disposta a viver verdadeiramente o 93 foi lindo, fazer novas amizades e me aproximar mais de pessoas incríveis que ficaram pra sempre no meu coração foi a melhor experiência que eu poderia ter.","O entrosamento e a dedicação da equipe","Que os coordenadores eram muito abertos a ideias, eles fizeram eu me sentir em casa e acolhida quando eu mais precisava, pois estava muito mal com problemas na minha vida pessoal e eles fizeram eu esquecer de tudo e ver que o problema nem sempre está em nós. A adoração com o [nome] foi incrível, marcante, e deu para sentir o calor do Espírito Santo, Deus enviou ele para dar respostas de coisas que eu esperava a muito tempo. 93 mini vai ficar para sempre na memória!","Poder fazer parte da equipe da cozinha","Gostei muito da espiritualidade dos atletas, não foi o atletas mais animado que já teve, mas foi o que eu mais senti a presença do Espírito Santo. Estava incrível. A organização dos momentos e o espírito de família dos atletas estavam muito bom, e tenho certeza que a nossa equipe de intercessão cumpriu o seu trabalho.","Que teve a ação social, diante de momentos que passei antes do retiro, estar com as crianças foi incrível!","O carinho o acolhimento a amizade","A participação e união que todos demonstraram para fazer tudo acontecer do melhor jeito possível.","Achei que a proposta geral estava dentro do proposto quando o assunto é mini TLC, houve crescimento, bons momentos de partilha e unidade...","que durante a ação social a equipe inteira que foi para o lar das crianças pode proporcionar uma tarde calorosa e com muito amor pra todos lá dentro. A adoração também foi um momento muito lindo e bem feito durante todo o retiro.","A equipe inteira estava cheia do espírito santo, até os que não conversavam se amaram 🥹","Que consegui participar e conhecer uma equipe do Mini (ainda não tinha tido oportunidade de conhecer).","amei tudo, em especial a ação social","Que construí muitas amizades incríveis","A escolha dos paradeiros, o pessoal da espiritualidade e escolha dos locais de ação social.","Eu gostei muito do mini master chef, gostei também da ação social.","o Lar de idosos e crianças","Adorei a equipe toda, a integração da equipe do fervo foi SURREAL, família com toda certeza!","Que a equipe estava tão entrosada, o clima (entre as pessoas) foi bom o final de semana todo","Foi a primeira vez que fui pra equipe do atleta Equipe animada bem participativo acolhedor eu amei","Gostei muito das açoes sociais, apesar de serem bem fortes, nos passa uma mensagem de que estamos trazendo alegria para quem precisa, a espiritualidade de sabado a noite foi bem forte e uma que gostei muito","Os chefes conduziram tudo de forma animada, leve e amorosa.","ação social principalmente pois foi um momento em q pudemos conhecer realidades diferentes das quais estamos acostumados e a entrada dos atletas na capela","Tudo foi muito bom","Que bom que era uma equipe com a maioria minicista novinho.","O último momento explicando sobre a celebração ficou muito didático e quem não conhece tão bem aprende … eu já conhecia mais achei muito bonito como o coordenador abordou todo o tema … foi incrível 🙌","Que conheci pessoas incríveis e Jesus falou muito comigo","Gostei muito das paradas, momento de adoração lindo demais, as refeições pessoal da cozinha arrasou, e a galera do fervo kkkk, a qual fiz parte!","Que bom que pudemos deixar diferenças para construir algo lindo. Que bom que mesmo com algumas falhas na comunicação todos se esforçaram e realizaram um trabalho incrível. Que bom que mesmo sendo ao soar do gongo conseguimos muuuitas arrecadações para as nossas ações sociais. Que bom que pudemos estar unidos em um espírito de atletas de Cristo e rezar juntos, brincarmos juntos, comermos juntos e nos doarmos juntos. Que bom que mesmo com a saída de uma coordenadora conseguimos alinhar de maneira linda com o novo coordenador.","As comidas dinâmicas","A empolgação dos minicistas mais frescos","Gostei que todos estavam muito dispostos a ouvir novas ideias","Gostei muito de todos os momentos que tivemos, foram preparados muito bem, e me tocaram muito","Gostei de tudo, mas a lasanha ganhou meu coração. Gostei muito da estrutura do cronograma, tudo bem amarradinho","Viver novamente um atletas. As ações sociais e partilhas foram muito boas","retiro maravilhoso, pessoas maravilhosas, com a melhor coordenação","Foi um fds mega abençoado... muito bom se conectar com Deus e receber o carinho dos amigos","A Eqp ao todo em geral, todos bem entrosados e abertos a todos os momentos.","Que bom que tivemos a opção de escolher para onde ir na Ação Social, de acordo com afinidades. Que bom que a equipe da cozinha era aquela, porque a comida estava incrível, a melhor de todos os retiros que já trabalhei.","Que eu fiz amigos e vivi uma experiência incrível com Jesus","que o retiro não atrasou e deu tudo certo!","as paradinhas, a ação social, a adoração, celebração domingo (chorei muito), ou melhor tudo","Da Ação Social, pois eu e meus parceiros de equipe se sentiram muito tocados","que bom que correu tudo certo ... apesar da chuvas que bom que fiz parte da melhor equipe de cozinha de atletas ... aonde todos estava em uniao amizade foi sensacional viver isso","Que bom que Deus cuida....","Que bom que a equipe estava bem unida, acredito que estava bem entrosada, estava realmente bom de estar nesse atletas.","que bom que aconteceu a ação social com as crianças","Que teve o retiro foi maravilhoso"],"que_pena":["nada foi ruim","Que sempre acaba","Que pena que acabou kkk mas o mais importante é guardar no coração e na memória todos esses 3 dias!","Que acabou","Que a entrada dos atletas na capela foi toda errada","Que pena que não houve um cuidado a mais em relação a alguns que preencheram que tinham restrição alimentar a carne de porco e não teve nenhuma opção de proteína nos Atletas)","Pena que só foram três dias né","acho que meu grupo do cachorro quente podia ter conversado melhor e no bota fora eu fui outra função, maleira, porque tinham poucos maleiros para ajudar.","Acho que a única parte que nao curti muito foi pra organizar a decoração. Eu nunca trabalhei em retiro do tlc entao estava um pouco perdida e sinto que nao fui muito bem direcionada ao que eu deveria fazer exatamente, mas no final deu tudo certo!!","Não tem nada que eu não gostei, não tenho oque reclamar da equipe dos atletas do 93º","Que a caixinha do bem estar estava completamente escassa, não tinha opções de remédio e os que tinham estavam no final. Também não achei muito legal algumas falas que um dos articuladores do atletas fez, foi bem rude e grosseiro.","Que pena que fomos um pouco desorganizados na apresentação no começo","Eu amei tudo não tenho q reclamar","Que acabou o mini","Que não recebi subsídio da função, acabei ficando sozinha na minha função e só descobri em cima da hora o que fazer","Que pena que passou tão rápido o final de semana","Que faltou tempo kkkk","que passou rapido","O que eu não gostei no retiro foi a divisão dos quartos. Acho que poderia ter sido organizada de uma forma mais equilibrada e confortável para todos.","Que acabou","Acho que a forma como a equipe da decoração do jantar de sábado não conversou e não se ajudou na decoração poderia ser um ponto a melhorar pois acabou atrapalhando um pouco.","Não teve","Que foram só 3 dias","Que acabou tão rápido","A entrada dos atletas na capela poderia ter sido melhor organizada, mas mesmo assim foi incrível, e a entrada mostrou o que era a quite dos atletas dos 93º, uma equipe muito forte no espiritual e lá dentro mostrou a animação da equipe.","Que não consegui participar das reuniões que antecederam","Que acabou KKKK","Fofocas, surtos de dirigentes e xingamentos desnecessários.","Uma pena a gente ver pessoas de fora do setor, inicialmente! Como frente de algumas equipes...","Não teve nada que eu não tenha gostado ou aproveitado ao máximo, o retiro num todo foi bem organizado, porém na organização do jantar de sabádo achei um pouco bagunçado, por conta de colocarem 3 frescas para organizar sem ninguém experiente acompanhando, o que fez com que demorassem tempo demais e acabarem perdendo 2 paradinhas importantes e muito bonitas do retiro.","Não teve a parte da fogueira nem a ida pra casa dos anjos","Que a cozinha da casa é longe da sala de palestras, daí não conseguimos nem dar uma espiadinha.","não tem nada que eu não tenha gostado","Que nossa entrada não foi conforme ensaiada (tiraram o tampão antes da hora)","Algumas funções estavam desorganizadas, equipes compostas por frescos sem alguém mais experiente para direcionar, desencontro de informações e atraso em enviá-las.","Que pena que acabou.","A chuva foi uma pena e eu nao poder acordar tarde 🤭","Que alguns momentos de Maria passa a frente foi mais difícil de ouvir devido aos barulhos","Não tem nada a dizer","A organização para nossa entrada e ensaios, nossa entrada acabou sendo antes do refrão num momento que faz muita diferença tanto pra quem trabalha quanto para quem está cursando, pois quem trabalhou pensou “nao foi assim que entraram quando fiz” e como n entramos da mesma forma acredito ter dado impacto mas n tanto quando entramos no refrão","Não consegui ir em todas as reuniões e demorei um pouco para entender o processo da minha função. Meus companheiros de função não contribuíram em praticamente nada.","que acabou 😔🥹","N poder exercer minha função (ligação externa sem moto) kakakakaka","Que pena que não teve o encontro com o Anjos.","Que choveu kkkkkk","As coisas atrasam um pouco","Sei que os horários estavam apertados, mas gostaria de ter tido momentos livres, para conversar com as pessoas, conhecer melhor elas. Senti falta de ter esses momentos livres.","Que pena que falhamos na comunicação e no contato com a reitoria. Que pena que não recebemos os subsídios e cronograma antes. Que pena que não conseguimos conversar com a equipe nas reuniões e só conseguimos conversar com o pessoal antes do RES. Que pena que faltou reunião entre as coordenações durante a caminhada. Que pena que nossa amiga de coordenação não pode estar conosco até o fim.","Pq acabou kkk","O cronograma fica um pouco disperso","Tudo na minha experiência foi otimo","Apenas no tempo pra dormir","a parte das caronas achei meio bagunçado.","Local muito longe.","que acabou","Pena que acabou...","A Eqp de animação, são ótimas pessoas mas percebi um pouco de vergonha nelas, creio que é apenas falta de experiência nesse quesito.","Que pena que acabooooooou….","Que pena que ocorreu atraso e eu fiz toda minha função sozinha","que ficou muito barulho na capela para a entrega das camisetas…","gostei de tudo","que pena,que faltou um pouquinho mais de participação dos outro reitores, acredito que toda reitoria é importande e quando vc faz algo para facilitar so para um lado acaba se tornando algo muito ruim .. ate pq parece que so um lado e melhor ...e importante que todos em comum acordo decida as coisa.ainda mais pensando que a casa dos atlesta e totalmente fora de não ...","Atrasos na preparação, erros de comunicação, alinhamentos truncados, equipes sem a possibilidade de conversar entre si nas reuniões, muita coisa sem resposta dos 45 do 2º tempo, reatividade, coordenadores novos do trio desamparados, erro com crachás, gente sem crachá mesmo com nome no mirante, erro na montagem de equipe nos grupos.","Que nos roubaram na competição do cachorro quente","poderia ter acontecido uma festa com algum tema","Que já acabou queria mais"],"que_tal":["se vc fosse mais aberto a conhecer mais pessoas","Ajustar o horario de acordar no sabado para 08h","Estava bem estruturado, acredito que foi muito bem organizado por toda as equipes!","Mais teatros","Ter mais organização ao todo","Que tal direcionar as ações sociais para todos os setores envolvidos (Orleans e CIC) e realizar mais reuniões com as equipes dos Atletas (a prepararão foi muito curta).","Um novo encontro","ficarmos mais tempo nas ações sociais, o tempo passou muito rapido","Fazer mais reencontros pros atletas!!","Foi tudo perfeito não mudaria nada","colocar mais opções de remédios na caixinha de primeiros socorros e checar quantos bem estares tem na casa, porque 2 é muito difícil de dar conta","Organizarmos melhor e ensaiar um pouco mais","Não mudaria nada","Eu participar do próximo mini","Não tenho sugestão, t a perfeito","continuar assim mas evoluindo?","nada a mudar","Eu acredito que poderia melhorar seria a divisão dos quartos. Eu fiquei com pessoas muito tranquilas, porém também com algumas pessoas mais velhas e de outras equipes que precisavam acordar e sair muito cedo. Então, quando a gente chegava dos momentos do retiro, elas já estavam dormindo, e precisávamos entrar totalmente em silêncio, quase sem enxergar direito para trocar de roupa, pegar nossas coisas, carregar celular, etc. Além disso, por serem pessoas mais velhas, acabava acontecendo de roncarem, tossirem bastante, e isso dificultou muito nosso descanso. Meu quarto comentou que talvez uma divisão por faixa etária pudesse funcionar melhor e fazer mais sentido para todos, tanto para quem precisava descansar mais cedo quanto para quem ainda estava voltando das atividades. Tirando isso, foi tudo incrível e muito especial. ✨","Mais dinâmicas","Poderiam colocar talvez 1 ou 2 pessoas que já trabalharam em outros minis em cada equipe principalmente de decoração para dar um norte aos frescos, mas tiram isso foi tudo perfeito.","Fazer um retiro de uma semana kkkkk Foi tudo incrível não tenho nada a mudar e sim só agradecer.","Reencontro","Tudo muito bom, acho que somente organização, mas claro às vezes organizamos algo mas Deus quer outra coisas, estava perfeito.","Melhorarmos com o tempo","Colocarmos algum teatro sobre realmente ser atleta, tipo um jogo de futebol com um atleta","Se a gente pudesse sempre valorizar as lideranças do nosso setor para conduzir as equipes","Como bem-estar, senti uma falta sobre os remédios proporcionados dentro da caixinha e de um termometro também, durante o retiro alguns cursistas vieram com suspeita de febre e a gente não tinha como medir na hora por falta de equipamento.","Tudo estava perfeito","Tentar uma casa mais próxima (sei que não é fácil).","não mudaria nada","Fazer a mesma equipe com as mesmas pessoas? Kkk","Proporcionar uma integração maior nas funções, organizar caronas com antecedência e organizar melhor o \"funcionamento\" do refeitório durante as refeições.","Tenho nada pra falar","Nao consigo pensar em nada no momento","A caixa de bem estar precisa ser revista urgentemente.","Pra mim nada","Atletas tem que entrar fazendo muito barulho na hora do refrao, faz total diferença e manter o que foi ensaiado","Direcionar melhor o grupo de função para que cada um saiba o que é de sua responsabilidade","ter mais paradinhas ou ter também mais ações sociais","Na próxima se Deus quiser não estará chovendo","Que tal se tivesse no atletas sempre gente com mais perfil de Mini.","Sugestão …que tivesse um momento para o pessoal da cozinha participar de algo em algum momento… mais profundo pra eles","A adoração durar mais tempo","Como foi a primeira vez que trabalhei, não sei se todos são assim, mas gostaria que tivesse alguns momentos livres para bater um papo.","Que tal entregarmos primeiramente o subsidio das funções primeiramente para os coordenadores para eles terem chão para conduzir a equipe. Que tal pensarmos em nomes para coordenar que sejam pro ativos e olhar com um pouco mais de atenção se a pessoa já não está sobrecarregada com outros cargo chave dentro do movimento.","Acho que nada","O tempo de espera entre a limpeza das refeições e o restante de cronograma, poderia ser pensado alguma ação ou liberado o pessoal pra fazer a higiene pessoal.","Acho que poderíamos organizar de dormir mais cedo apenas","sugestão para as caronas, organizar isso com mais antecedência.. cada um já sabendo com quem vai em cada um dos deslocamentos","Tem um revezamento da equipe da cozinha para eles poderem participar dos momentos com a equipe.","reviver isso","No momento não me lembro de nada","Colocar pessoas que já participaram de outros retiros como animação, ou passar ideias de como eles devem criar um quebra gelo para atrair todos os cursistas","Que tal um momento livre à tarde para passear pelo lago, conhecer brevemente.","Que tal fazer um jogo com os atletas","colocar pessoas mais dispostas a ideias e a direcionar para decoração, pois senti que o resto da minha equipe não quis muito a ajuda dos frescos, no retiro arrumavam as coisas sem chamar a gente, pois como não sabíamos a horas certas para arrumar contávamos com a ajudas deles que já tinham trabalhado outras vezes para nos direcionar e acabamos ficando de fora de algumas coisas, sendo que queríamos ajudar.","Nas reuniões explicar melhor como será o retiro","que tal melhorar um pouco mais essa questão da ação social...as coisas sempre são passadas em cima da hora muito atropeladas .. tbm vejo que não ha necessidade de ir em dois local e muito legal sim, é massa mas precisa ter um preparo principalmente quando a questão e idosos vc precisa preparar algo com restrições alimentares e acabam fazendo as coisas sem muito cuidado ..e vendo a questão a cozinha dos atletas e tudo muito precario ali em questão de formas e forno.. com isso as doceiras ficam bem bem preocupada pois com as restrições dos idosos fica muito mais trabalho para poucas pessoas.. udo é um aprendizado mas acredito que possa ser melhorado isso..","A sintonia do 300 depende do bom alinhamento da equipe chave.","Alinhar o cronograma para que os teatros tenham uma conectividade com a paradinha abordada logo na sequência. Por exemplo, o Estou Vivo está solto no cronograma, pois depois dele veio fechamento da espiritualidade sobre o dia e banho depois. Daria para colocar o estou vivo antes de Emaus e a convenção dos demônios depois de sepulcros caiados.","festa a fantasia","Fazer mais retiro kkkk, (eu tenho que estar lá) 🙄"],"synth":{"que_bom":["Equipe muito entrosada, animada e disposta — clima de família","Ação Social foi um dos pontos mais marcantes (lar de idosos e lar de crianças)","Adoração e celebração de domingo foram emocionantes","Cozinha elogiada como uma das melhores de todos os retiros","Coordenação acolhedora, aberta a ideias e presente","Boa escolha de paradeiros e da equipe de espiritualidade","Predominância de minicistas mais novos trouxe empolgação"],"que_pena":["Entrada dos Atletas na capela saiu diferente do ensaiado (tampão e timing do refrão)","Caixinha de bem-estar com poucos remédios e sem termômetro","Algumas funções formadas só de novatos sem alguém experiente para orientar","Falta de subsídios e cronograma com antecedência em algumas funções","Pouca comunicação entre coordenação e reitoria durante a preparação","Atrasos pontuais e problemas com crachás (alguns sem nome no mirante)"],"que_tal":["Sempre incluir ao menos um experiente em cada equipe de função para orientar os novatos","Reabastecer urgentemente a caixinha de bem-estar (remédios e termômetro)","Entregar subsídios e cronograma primeiro aos coordenadores das funções","Organizar caronas com mais antecedência (definir quem vai com quem)","Garantir a entrada dos Atletas exatamente como ensaiada, no refrão","Criar revezamento para que a equipe da cozinha viva mais momentos da equipe","Repensar divisão dos quartos por faixa etária e compatibilidade de horários"]}},"Anjos":{"total":44,"ratings":[{"label":"Conteúdo das reuniões","original_label":"Sobre o conteúdo das reuniões:","counts":{"Gostei":16,"Gostei muito":22,"Não participei das reuniões":6},"total":44},{"label":"Espiritualidade das reuniões","original_label":"Sobre a espiritualidade das reuniões:","counts":{"Gostei":18,"Gostei muito":19,"Não participei das reuniões":6,"Não gostei":1},"total":44},{"label":"Integração nas reuniões","original_label":"Sobre a integração nas reuniões:","counts":{"Gostei":17,"Gostei muito":20,"Não participei das reuniões":6,"Não gostei":1},"total":44},{"label":"Animação nas reuniões","original_label":"Sobre a animação nas reuniões:","counts":{"Gostei":22,"Gostei muito":10,"Não participei das reuniões":6,"Não gostei":5,"Não entendi / Não lembro":1},"total":44},{"label":"Tempo de duração das reuniões","original_label":"Sobre o tempo de duração das reuniões:","counts":{"Achei o tempo de duração ideal":33,"Não participei das reuniões":6,"Achei longas demais":5},"total":44},{"label":"Seu desempenho","original_label":"Sobre o seu desempenho:","counts":{"Gostei":16,"Gostei muito":27,"Achei mais ou menos":1},"total":44},{"label":"Trabalho realizado pela sua equipe","original_label":"Sobre o trabalho realizado pela sua equipe:","counts":{"Gostei muito":31,"Gostei":10,"Achei mais ou menos":3},"total":44},{"label":"Entrosamento com seus parceiros de função","original_label":"Sobre o entrosamento com seus parceiros de função:","counts":{"Gostei":12,"Gostei Muito":28,"Achei mais ou menos":4},"total":44},{"label":"Paradas e paradinhas que vocês viveram","original_label":"Sobre as paradas e paradinhas que vocês viveram:","counts":{"Gostei Muito":31,"Gostei":12,"Achei mais ou menos":1},"total":44},{"label":"Espiritualidade no retiro","original_label":"Sobre a espiritualidade no retiro","counts":{"Gostei Muito":32,"Gostei":10,"Achei mais ou menos":2},"total":44},{"label":"Visitas realizadas","original_label":"Sobre as visitas realizadas:","counts":{"Gostei Muito":36,"Gostei":7,"Não pude participar":1},"total":44},{"label":"Entrosamento da equipe","original_label":"Sobre o entrosamento da equipe:","counts":{"Gostei Muito":33,"Gostei":10,"Achei mais ou menos":1},"total":44}],"que_bom":["Da acolhida, do entrosamento e da alegria","Se tivesse mais dinâmicas","Da casa de retiro","Todos os momentos estavam bem estratuturados, não teve enrolação ou atrasos. Devido à isso, aparentemente, não ocorreram momentos que foram preparados de última hora para \"tapar buraco\". No domingo ocorreu uma certa \"correria\", mas é comum e super compreensível. Além do citado acima, vale destacar também o entrosamento da equipe. Em todos momentos teve muito carinho, muita proximidade, muita reflexão e companherismo. Com toda certeza isso foi algo que marcou a cada um que estava na equipe.","Foi essa equipe, muito unida e organizada","Estar na equipe da cozinha.","foi um retiro abençoado fazia tempos que eu não participava de um com a equipe tão entrosada, chefes mandaram muito bem, tava tudo perfeito, comida, a festa foi legal, a equipe, até na minha função, casa muito legal também, gostei de tudo","Gostei muito da decoração da capela, paradinhas","todos foram muito acolhedores, meu coração pós o retiro está com um sentimento de missão cumprida, adorei ser da equipe anjos da guarda era meu sonho ser então amei o retiro","Os momentos e risadas","Gostei do momento na capela aonde falava sobre a nossa família","Que foi tudo perfeito ao olhos de Deus, e pudemos receber mensagens lindas","Da gente tendo contato com as famílias e na hora de buscar eles na capela","Nada a declarar","Gostei de tudo","Que ficamos naquela casa, era super limpar e bem cuidada, a estrutura é muito boa e mega confortável, seria legal se conseguíssemos manter o espaço. Outro ponto muito positivo foi a preparação da equipe durante o retiro para as visitas.","Eu gostei muito do acolhimento da equipe, sou de outro setor e senti como se fossemos uma família muito unida.","Que existe a equipe de anjos, extremamente essencial no Mini TLC! Muito bom os 3 coordenadores de anjos, muito alinhados e muito cuidadosos com a equipe. A casa de retiro era maravilhosa, ótima estrutura. Alimentação maravilhosa.","que eu participei do 93º e conheci a equipe de anjos, me apaixonei por tudo o que a gente fez. visitas são perfeitas e eu chorei em todas as que fiz de emoção mesmo","As visitas foram muito boas. A equipe estava unida, se ajudavam nas tarefas.","que eu pude conhecer um setor novo e fazer novas amizades.","A proposta do Mini é muito legal, ficou claro dentro do trabalho da equipe o quanto é relevante essa forma de evangelização. É um desafio colocar jovens pra trabalhar com jovens.","Que bom que alcançamos o propósito para os 63 cursistas e entendimento nas equipes","Ficamos em uma casa maravilhosa, como falamos o nosso hotel 4 estrelas, vivemos experiências incríveis, conexão com Deus e conheci novas pessoas.","Que a casa do anjos foi ótima","Dormir pouco mas sair com a alma recarregada de alguma forma misteriosa divina, perceber q Deus fala até no silêncio, galera da cozinha muito entrosada e fez uma comida divina,sentir acolhimento sem precisar fingir ser outra pessoa, abraços que curaram","Todos os momentos, principalmente, a recepção da equipe comigo, por não ser do setor fui muito abraçado por todos","Que tivemos ótimos momentos em equipe","A equipe estava bem entrosada, a coordenação de equipe foi muito querida, acolhedora e preparada.","Coordenação de anjos estava entrosada e fez o retiro acontecer; A casa de retiro era maravilhosa (sabemos do valor, mas a infra é de se pensar); Que as visitas aconteceram; A decoração estava incrível; As paradas foram muito bem conduzidas;","Que a equipe estava em sintonia Que os coordenadores foram maravilhosos e super respeitosos A comida estava perfeita A festa foi muito boa A casa ótima As paradinhas foram ótimas Adoração muito boa!!!! [nome] mandou bem","O 93 foi muito bom, além de divertido. A equipe era muito boa, entrosada, os coordenadores super legais tavam ali o tempo todo, ajudando brincando. Gostei muito do [nome] fazendo a hipnose, tudo foi muito leve, o trabalho foi leve e tranquilo, todos entrosados","O empenho de cada um para exercer sua função, como foi uma equipe unida em todos os sentidos, a coordenação e espiritualidade foram impecáveis, trabalho incrível","Que colocaram muitas pessoas que amam o movimento e o mini na equipe, isso torna as coisas mais legais","Da dinâmica e temas abordados","Que bom que consegui participar de todas as preparações do início ao fim e fazer parte do 93, que foi lindo! Que bom que consegui levar meus afilhados pro mesmo caminho que o meu!","Que tudo aconteceu da melhor forma e o retiro foi um sucesso","Que bom que as pessoas foram receptivas, casa muito boa, boa coordenação, boa comida, espiritualidade falou muito bem, capela estava bonita, teatros bons e divertidos.","não sou do setor mas tive uma boa experiência, me senti muito acolhido por todos fiquei muito feliz e fiz várias amizades. tava tudo bom, os cordenadores foram acolhedores e cuidaram da equipe, comida, equipe, paradinhas e paradas, teatro tava tudo bom","Participar novamente desse setor","A quantidade de paradas e às visitas"],"que_pena":["Acredito que foi tudo tranquilo, não me lembro de algo que me tenha marcado negativamente.","Muito pouco tempo para conversar","Não tenho nada a declarar","Que pena que acabou..♫","A questão da divisão e organização dos carros, para as visitas. Acredito que é preciso deixar claro para os motoristas, que a escolha de quem irá com eles são dos articuladores/chefes.","único erro pra mim foi quando chegamos na casa do cursilho e a [nome] se meteu em uma função que não era dela e quase deu enrosco pelo wue vi, acho que cada um tem que cuidar da sua função pra não dar erro no final do retiro","Que nosso grupo de função não teve um ótimo entrosamento - kit quarto. Achei que ficou muita gente na equipe, ficou bagunçado, algumas pessoas não fizeram nenhuma lembrança, somente ajudou a montar o kit.","na parte da minha função kit quarto tinha uma menina que queria mandar mas fora isso foi otimo","Achei que o retiro atrasou um pouco","Que pessoas pedem baixa em cima da hora","Que acabou","Nada a declarar","Nada a reclamar","Que não pude participar das reuniões de preparação para o retiro, a quantidade de bebês e crianças pequenas na casa tiraram um pouco da concentração devido a interação de alguns dirigentes que brincavam em momentos de paradinhas e mesmo durante a missa.","Senti que nas reuniões as funções não foram explicadas muito bem, os descritivos estavam meio incompletos. Do retiro nada a reclamar, só o preparo das reuniões mesmo.","Que choveu muito. Senti falta de momentos de espiritualidade para entrosamento da equipe. Senti falta de tempo para decorar os ambientes dentro do cronograma.","no retiro foi tudo bem, eu amei a experiência, mas acho que algumas paradas não foram muito legais… o encerramento também foi conturbado pq toda hora chegava informação diferente por várias pessoas e eu vi a [nome] a [nome] o [nome] doidos atrás do pessoal do corredor na ligação pra poder saber o que fazer. mas depois que deu certo, funcionou e foi muito especial","Acabei vendo muitas pessoas no celular e até de fone de ouvido.","Que tem pessoas que se sentem maiores que as outras e querem mandar na função","Alguns dirigentes mais experientes dando um exemplo não tão bom: faltando nas reuniões, conversando durante as mesmas, fazendo pouco caso da função, não se preparando como deveria... Acho que está virando \"mais um retiro\", e isso faz com que vá se perdendo a essência, pois não se faz mais com tanto amor e entusiasmo!","Que não vamos fazer outros anjos lá 😭👼","Que muita coisa foi desorganizada (roteiro de visitas, informações, envio de doc, veracidade de informações, integração das pessoas de cada função e iniciativa do pessoal…)","Irmão vinha quase toda hora e passava pela cozinha","Gostei de tudo","Que os dirigentes não entendem sua responsabilidade em equipes externas e acabam agindo como cursistas","Que o teatro da família margarina foi para sexta-feira à noite. Fica extremamente corrido pra equipe do teatro na sexta. E fica um tempo muito grande no sábado sem teatro. Inclusive não faz sentido fazer um teatro que fala de café da manhã em plena janta. Já há um teatro extenso na sexta, adicionar o mais um para a noite de sexta (que originalmente era no sábado de manhã) torna tudo muito caótico.","Que as pessoas não respeitaram a divisão de carros para as visitas e foram com quem tinham mais proximidade; Que nem todos participaram das paradas (mesmo a gente chamando algumas pessoas ficaram de papo no refeitório ou nos quartos); Que a quantidade de baixas na semana do retiro é tão alta; Que a equipe de cozinha participou de poucos momentos;","Que algumas lideranças por serem antigas não respeitam e não participam dos momentos Inclusive que os coordenadores já haviam separado os carros para visitas mas não respeitaram e teve carro que foi em 2 pessoas e teve carro que foram em 5 (maioria pessoal que já coordenou e sabe como funciona, infelizmente)","Eu peguei uma visita muito longe mas entendi que alguém tinha que fazer, mas teve uma família que fez uma visita só e ainda foi perto da casa onde a gente tava, achei injusto. Acho que o pior foi a confusão que fizeram ali ao sair ou não pro gramado, no cursilho isso já, disseram lá que a ponteira uma mulher loira ficou fazendo confusão e mandando a gente ir pro gramado na hora errada e que isso não era função dela, mas no final deu tudo certo e a gente não preciso sair aquela hora, mas quase saímos","Muitas vezes tive que fazer funções de terceiros se não o retiro não teria andamento, como por exemplo as rotas para as casas, foram feitas sexta a noite e tive q ajudar os meninos pq eles não iriam conseguir sozinhos","[nome] inconveniente e sempre usava os momentos para falar de algo não necessário E atrapalhava alguns momentos [nome] bem estar atrapalhou muitos momentos, levou um martelo que ajuda nas dores e ficava batendo nas pessoas durante os momentos, tudo bem ajudar, mas atrapalhava por estar em momentos como Maria Passa, e levou coisa de acupuntura (??????) e queria fazer em todo mundo.","Que as reuniões batiam com outras de preparação, do escolar, eventos e TLC, entendo que o calendário é maluco e concorrido, mas eu particularmente quase dei baixa pois tudo batia","Da postura de algumas pessoas, nem dirigiram a palavra","Que pena que algumas equipes não estavam tão alinhadas e acabava transparecendo no rosto das pessoas kkkk Que pena que no encerramento quase entramos adiantado kakakaa estávamos no refeitório aguardando quando avisaram pra entrar, nossos coordenanjos arrumaram a gente, ficamos de mãos dadas para entrar e depois vieram avisar que a informação estava errada. Infelizmente nos encerramentos do mini sempre dá um problema ou outro porque as informações chegam erradas por diferentes pessoas de diferentes funções. Eu não sei quem foi que deu informação errada, mas foi um momento chato de ter que se organizar e ter que voltar pro refeitório depois. Mas apesar disso depois que tudo foi organizado, foi lindo demais, fiquei emocionado como sempre fico","Que são só 3 dias de retiro","Que pena que a secretária escolheu onde iria fazer a visita com sua família em uma casa conhecida e perto e fizeram apenas uma visita e ficaram o resto do dia na casa, que pena que os roteiristas não conseguiram fazer as rotas e sobrecarregou a secretária, que pena que no final a equipe não respeitou o pedido de silêncio antes da entrada na capela, antes de chamada para o gramado houve dois falsos avisos para sairmos nos preparamos e é de repente tínhamos que voltar e depois pedindo de novo para sair e mais uma vez não era pra ir, percebi que os coordenadores tiveram que sair da sala para entender o que estava acontecendo e ter a informação correta.","achei as divisões dos carros erradas, tinham carros na visita com 3 pessoas, 4 pessoas e 2 pessoas, poderiam ter sido melhor divididos. Ali no final lá n casa do cursilho já, todo mundo percebeu que deu b.o entre as pessoas do corredor, onde uma pessoa começou a acelerar a gente pra sair pra grama e depois não era mais pra ir, aí a [nome] teve que sair pra entender e a gente já tava posicionado pra sair, quando ela voltou deu problema de novo e agente teve que se posicionar mais 2 vezes, se tivesse saído aquela hora íamos ficar 40 minutos lá fora no frio","Que não pude ir em todas as reuniões","Talvez mais presença da cozinha em alguns momentos"],"que_tal":["Conseguir usar sempre a casa que usamos :).","Se fazer uma ação de ponte entre as famílias e o atletas não só como tranquilizar as famílias mas como eles verem o trabalho na prática do atletas junto do anjos","Muita baixa do retiro de última hora, assim prejudica as vezes algumas funções. Talvez ter uma lista de espera para esses casos extremos","No momento não há sugestões de mudança.","Fazer a missa do atletas e do anjos juntos igual antes","Tentar montar mais momentos para a equipe da cozinha, participar dessa equipe é sem dúvidas a melhor, no meu ponto de vista, por toda dedicação e desempenho, mas acredito que fazer mais propostas além das que já são feitas, faria com que essa equipe participasse e vivência-se muito mais dos momentos de entregas.","Kit quarto - acredito que 7 pessoas ou no máximo 8 pessoas é o suficiente.","acho que nada","Só tomar cuidado com o tempo, demais estava tudo ótimo","Da festa ser mais cedo, pelo horário achei muito tarde. Poderia ter sido no mesmo horário do jantar","Não tem","Ser mais dias de retiro kkkk","Nada a declarar","Não tenho nada","Mantermos o local da casa onde a equipe ficou, fazer uma reunião extra para orientação de quem entra depois na equipe, eu não recebi a descrição da minha função e a equipe demorou para me passar informações de como estava o andamento das coisas.","Se utilizássemos os grupos de cores do anjos para fazer mais momentos de entrosamento e partilha, nos conhecer mais e ficar mais próximos. Parecia que o grupo de cores era só para lavar a louça mesmo quando solicitado hahahahaha(não acho ruim lavar a louça só para deixar claro!!)","trazer outras oportunidades, pessoas diferentes para falar, outros momentos de integração, e espiritualidade que realmente mostra o que está dizendo","Os kits quarto poderiam ter mais coisas.","ter mais dinâmicas com a família que é formada no início","Investir em mais formação para os mais jovens, dar oportunidade para que cresçam e não precisem depender dos dinossauros para que o retiro aconteça. Rever nossas equipes com base no motivo real pelo qual estamos participando (um trabalho a mais, mais uma foto pra coleção, evangelizar, aprender, partilhar...?)","Ideia da casa de anjos para os outros retiro, casa bem localizada para saída de visita , acomoda perfeitamente, e confortável.","Voltarmos lá no próximo COP? kkk (organizar melhor o horário da sexta pois acredito que o momento de capela da sexta/sábado pois já era sábado nesse momento esse mesmo seria melhor aproveitado por todos se não tivesse sido TÃO TARDE.)","Fazer organização de informações, repasse de doc de forma correta e conferida, cobrança do povo durante reuniões para deixar quem realmente quer trabalhar e se dedicar a função e não fazer de qualquer forma","Que a proxima casa tenha cozinha tao boa quanto essa em questao de espaço","Nada a mudar, estava tudo perfeitamente perfeito kkkkkkkkkkkk","-Melhorarmos a comunicação quanto as responsabilidades dos dirigentes em participar das reuniões, estar atento as orientações durante o retiro, respeitar os pedidos de silêncio e as falas de quem está dando uma parada. -Melhorar nossa organização como um todo principalmente no domingo, o tempo ocioso das equipes por conta do atraso no corredor acaba cansando muito as equipes externas que precisam finalizar todo o cronograma em suas casas e ainda se deslocarem no horário para ainda terem que esperar horas para as apresentações. Que se for necessário esperar que esse tempo possa ser otimizado. -Prestarmos mais atenção nos detalhes, revisarmos os descritivos, termos orientações claras do que deve ou não ser feito e por quem. - Que acham intervenções antes do retiro para alinhar as coisas como caronas, equipes pra visita, orientações gerais para que durante o retiro não se gere um \"climão\" com certas lideranças dando orientações diferente do que foi passado pelos coordenadores de equipe - Trocar uma ideia com certas lideranças no particular pra entender que função em retiro e cronograma não é só \"de bonito\" é algo pra ser seguido pra que também não se atravessem e gerem situações desconfortáveis a todos","Retornar o teatro da família margarina para o sábado de manhã","Se defiramos apenas os motoristas e o pessoal se distribuir entre os carros;","Se as lideranças servirem como lideranças de verdade","Acho que dava pra organizar melhor a questão das visitas pra não ficar pesado pra ninguém, acho que quem vai mais perto, poderia ir em mais casas","funções que demandam para o andamento do retiro, terem responsáveis ágeis q práticos, que realmente estejam dispostos a ajudar, contato com a família e roteirista por exemplo os dois responsáveis mal respondiam os grupos para organização do retiro","Que tal quando os compromissos baterem pensarem em fazer horários diferentes,","Ter um critério mais vigoroso para convidar os participantes, muitos jovens imaturos sem responsabilidade e empatia.","Que tal se houvesse direcionamento maior no encerramento para não termos problema como aconteceu. Que tal se tivesse uma reunião a mais pra equipe de anjos pra ter mais entrosamento mesmo tendo seria legal mais uma porque os nossos coordenanjos estavam bemalinhados mas vi algumas funções que na estavam tanto","Não tenho o que citar para melhorar, pois na minha opinião o COP foi fantástico.","Para um próximo retiro pensar melhor sobre os roteiristas para não sobrecarregar outras funções, separar melhor a quantidade de pessoas por carro para que não tenha visitas com duas pessoas só e outras com cinco.","Mais organização no encerramento, pra gente não ficar perdido na hora certa de sair e se posicionar","Me chamar de novo!","O MINI precisa investir numa prensa própria, padronizando e baixando o custo da confecção das assas"],"synth":{"que_bom":["Casa de retiro foi destaque: confortável, bem cuidada e bem localizada","Equipe muito unida com coordenação alinhada e acolhedora","Visitas às famílias emocionaram a equipe — a proposta funciona","Espiritualidade e decoração da capela foram elogiadas","Comida e festa muito boas","Acolhimento aos dirigentes que vieram de outros setores"],"que_pena":["Confusão no encerramento por informações erradas de pessoas fora das funções designadas","Divisão dos carros para as visitas não foi respeitada (carros com 2 e outros com 5)","Roteiristas pouco ágeis, sobrecarregando a secretaria com as rotas","Dirigentes experientes faltando reuniões ou desrespeitando momentos","Reuniões batendo com outros eventos do movimento; baixas em cima da hora","Função do kit-quarto com gente demais e pouco entrosada","Equipe da cozinha distante de alguns momentos da equipe"],"que_tal":["Reforçar que apenas a ligação interna repassa orientações no encerramento","Definir apenas os motoristas e distribuir as pessoas entre os carros de forma equilibrada","Escolher roteiristas pró-ativos e responsivos para não sobrecarregar a secretaria","Reduzir equipe do kit-quarto para 7 ou 8 pessoas","Manter a casa atual como referência para próximos retiros","Mais formação para os jovens, reduzindo dependência dos mais antigos","Mais momentos de partilha entre os grupos de cores (não só para louça)"]}}}};
+
+// ============== Helpers ==============
+const CATEGORIES = {
+  lovedit: ["Gostei Muito", "Gostei muito", "Sim", "Sim, me senti muito acolhido e cuidado durante o retiro", "Achei o tempo de duração ideal"],
+  liked: ["Gostei", "Mais ou menos, mas consegui preencher", "Me senti suficientemente acolhido e cuidado, foi normal"],
+  neutral: ["Mais ou menos, fiquei com algumas dúvidas.", "Achei mais ou menos", "Não entendi / Não me lembro", "Não entendi / Não lembro"],
+  negative: ["Não gostei", "Achei longas demais", "Achei curtas demais"],
+  na: ["Não participei das reuniões", "Não pude participar"]
+};
+
+function categorize(counts) {
+  const buckets = { lovedit: 0, liked: 0, neutral: 0, negative: 0, na: 0 };
+  const total = Object.values(counts).reduce((a,b)=>a+b, 0);
+  for (const [k, v] of Object.entries(counts)) {
+    let placed = false;
+    for (const [cat, items] of Object.entries(CATEGORIES)) {
+      if (items.includes(k)) { buckets[cat] += v; placed = true; break; }
+    }
+    if (!placed) buckets.neutral += v;
+  }
+  return { buckets, total };
+}
+
+function satisfactionScore(counts) {
+  const { buckets, total } = categorize(counts);
+  const effective = total - buckets.na;
+  if (effective === 0) return 0;
+  return Math.round((buckets.lovedit + buckets.liked) / effective * 100);
+}
+
+function avgScore(items) {
+  if (!items.length) return 0;
+  const sum = items.reduce((a, r) => a + satisfactionScore(r.counts), 0);
+  return Math.round(sum / items.length);
+}
+
+// ============== Stats ==============
+function renderStats(container, items) {
+  container.innerHTML = '';
+  items.forEach((it, i) => {
+    const card = document.createElement('div');
+    card.className = 'stat-card' + (it.style ? ' ' + it.style : '');
+    card.innerHTML = `
+      <div class="stat-label">${it.label}</div>
+      <div class="stat-value">${it.value}</div>
+      <div class="stat-foot">${it.foot}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// ============== Rating bar ==============
+const CATEGORY_LABELS = {
+  lovedit: 'Gostei muito',
+  liked: 'Gostei',
+  neutral: 'Neutro / não me lembro',
+  negative: 'Não gostei',
+  na: 'Não participou'
+};
+
+function renderRatingRow(item) {
+  const { buckets, total } = categorize(item.counts);
+  if (total === 0) return '';
+  const pct = (n) => total > 0 ? (n / total * 100) : 0;
+  const score = satisfactionScore(item.counts);
+
+  const seg = (cls, n) => {
+    if (n <= 0) return '';
+    const p = pct(n).toFixed(1).replace('.0', '');
+    const conceptLabel = CATEGORY_LABELS[cls];
+    const tip = `${conceptLabel}|${n} ${n === 1 ? 'pessoa' : 'pessoas'} • ${p}%|${cls}`;
+    return `<div class="seg ${cls}" style="width:${pct(n)}%" data-tip="${tip}"></div>`;
+  };
+
+  return `
+    <div class="rating-row">
+      <div class="rating-label">
+        <span class="rating-label-text">${item.label}</span>
+        <span class="rating-label-pct">${score}%</span>
+      </div>
+      <div class="rating-bar">
+        ${seg('lovedit', buckets.lovedit)}
+        ${seg('liked', buckets.liked)}
+        ${seg('neutral', buckets.neutral)}
+        ${seg('negative', buckets.negative)}
+        ${seg('na', buckets.na)}
+      </div>
+    </div>
+  `;
+}
+
+// ============== Cursistas ==============
+function renderCursistas() {
+  const c = DATA.cursistas;
+  const total = c.total;
+
+  // Build all rating items as flat list for stats
+  const allItems = [];
+  Object.values(c.grupos).forEach(g => g.forEach(r => allItems.push(r)));
+  const avg = avgScore(allItems);
+
+  // Compute % gostei muito of total ratings
+  let totalLoved = 0, totalAll = 0;
+  allItems.forEach(it => {
+    const { buckets, total: t } = categorize(it.counts);
+    totalLoved += buckets.lovedit;
+    totalAll += t - buckets.na;
+  });
+  const lovedPct = totalAll > 0 ? Math.round(totalLoved / totalAll * 100) : 0;
+
+  const acolhCounts = c.grupos["Acolhimento"][0].counts;
+  const acolhPct = satisfactionScore(acolhCounts);
+
+  renderStats(document.getElementById('cursistas-stats'), [
+    { label: 'Respostas', value: total, foot: 'cursistas avaliaram o retiro', style: 'accent' },
+    { label: 'Aprovação geral', value: avg + '%', foot: 'média de avaliações positivas em todos os itens' },
+    { label: '"Gostei muito"', value: lovedPct + '%', foot: 'das respostas no nível mais alto' },
+    { label: 'Acolhimento', value: acolhPct + '%', foot: 'se sentiram acolhidos pelos dirigentes', style: 'pink' },
+  ]);
+
+  // Render rating groups
+  const grpContainer = document.getElementById('cursistas-ratings');
+  grpContainer.innerHTML = '';
+  const groupSubs = {
+    "Inscrição": "Avaliação da preparação pré-retiro",
+    "Momentos Gerais": "Capela, dinâmicas e teatros",
+    "Paradinhas (Sexta)": "Primeiros momentos espirituais e reflexivos",
+    "Paradas e Palestras (Sábado)": "Coração temático do retiro",
+    "Momentos de Domingo": "Encerramento e despedida",
+    "Acolhimento": "Cuidado da equipe",
+  };
+  Object.entries(c.grupos).forEach(([nome, items]) => {
+    const div = document.createElement('div');
+    div.className = 'rating-group';
+    div.innerHTML = `
+      <h3 class="rating-group-title">${nome}</h3>
+      <p class="rating-group-sub">${groupSubs[nome] || ''}</p>
+      ${items.map(renderRatingRow).join('')}
+    `;
+    grpContainer.appendChild(div);
+  });
+
+  // QBT cards for cursistas
+  renderQBT('cursistas-qbt', c.synth, {
+    cursistas_open: c.open_responses
+  }, 'cursistas');
+}
+
+// ============== Teams ==============
+let currentTeam = 'Geral';
+
+// Cross-cutting synthesis derived from reading all 4 teams' responses
+const GERAL_SYNTH = {
+  que_bom: [
+    "Entrosamento das equipes destacado em todos os setores",
+    "Espiritualidade tocou as 4 equipes — momentos de capela marcantes",
+    "Coordenação acolhedora e bem alinhada nas 4 equipes",
+    "Comida elogiada como excelente (especialmente Atletas e Alicerce)",
+    "Sentimento de propósito alcançado: transformação visível nos cursistas",
+    "Ação social (Atletas) e visitas às famílias (Anjos) emocionaram as equipes",
+    "Mistura saudável de experientes e novatos elogiada em todas as equipes",
+  ],
+  que_pena: [
+    "Encerramento conturbado com informações erradas e pessoas atravessando funções alheias (relatado em Corredor, Anjos e Alicerce)",
+    "Dirigentes mais experientes ausentes em reuniões ou desrespeitando momentos",
+    "Falta de subsídios e cronograma com antecedência em algumas funções",
+    "“Migué” e dispersão sobrecarregando quem se dedicava (especialmente louça e cozinha)",
+    "Conversas paralelas e uso de celular durante paradas, distraindo cursistas",
+    "Episódio constrangedor de fala agressiva da Coordenação Geral relatado por membros da equipe",
+    "Divisão de carros para visitas não respeitada (Anjos): carros com 2 e outros com 5",
+  ],
+  que_tal: [
+    "Reforçar que apenas a ligação interna repassa orientações no encerramento",
+    "Criar função de “carteira” para aliviar a secretaria (sugestão recorrente)",
+    "Sempre incluir ao menos um experiente em cada equipe de função",
+    "Repensar critérios de convite para funções-chave (compromisso real com a preparação)",
+    "Maior cuidado e respeito da Coordenação Geral no trato com as pessoas",
+    "Revisar subsídios e descritivos de função, entregando-os com antecedência",
+    "Renovar utensílios do patrimônio e da caixinha de bem-estar",
+  ]
+};
+
+// Normalize a label for matching across teams
+function normLabel(s) {
+  return s.trim().replace(/:$/, '').trim().toLowerCase();
+}
+
+// Build aggregated "Geral" team by combining common indicators across all 4 teams
+function buildGeralTeam() {
+  const teams = ['Corredor', 'Alicerce', 'Atletas', 'Anjos'];
+  // Find labels present in ALL teams (common indicators)
+  const labelSets = teams.map(t => new Set(DATA.teams[t].ratings.map(r => normLabel(r.original_label))));
+  const commonLabels = [...labelSets[0]].filter(l => labelSets.every(s => s.has(l)));
+
+  // Preferred display order
+  const order = [
+    'sobre o conteúdo das reuniões',
+    'sobre a espiritualidade das reuniões',
+    'sobre a integração nas reuniões',
+    'sobre a animação nas reuniões',
+    'sobre o tempo de duração das reuniões',
+    'sobre o seu desempenho',
+    'sobre o trabalho realizado pela sua equipe',
+    'sobre o entrosamento com seus parceiros de função',
+    'sobre a espiritualidade no retiro',
+    'sobre o entrosamento da equipe',
+  ];
+  const sortedLabels = commonLabels.slice().sort((a, b) => {
+    const ai = order.indexOf(a); const bi = order.indexOf(b);
+    return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+  });
+
+  // Aggregate counts
+  const aggregatedRatings = sortedLabels.map(lbl => {
+    const combinedCounts = {};
+    let displayLabel = lbl;
+    teams.forEach(t => {
+      const row = DATA.teams[t].ratings.find(r => normLabel(r.original_label) === lbl);
+      if (row) {
+        displayLabel = row.label;
+        for (const [k, v] of Object.entries(row.counts)) {
+          combinedCounts[k] = (combinedCounts[k] || 0) + v;
+        }
+      }
+    });
+    return {
+      label: displayLabel,
+      original_label: lbl,
+      counts: combinedCounts,
+      total: Object.values(combinedCounts).reduce((a,b)=>a+b, 0),
+    };
+  });
+
+  const totalRespondents = teams.reduce((sum, t) => sum + DATA.teams[t].total, 0);
+
+  return {
+    total: totalRespondents,
+    ratings: aggregatedRatings,
+    grouped_que_bom: teams.map(t => ({ team: t, items: DATA.teams[t].que_bom })),
+    grouped_que_pena: teams.map(t => ({ team: t, items: DATA.teams[t].que_pena })),
+    grouped_que_tal: teams.map(t => ({ team: t, items: DATA.teams[t].que_tal })),
+    synth: GERAL_SYNTH,
+  };
+}
+
+const GERAL = buildGeralTeam();
+
+function renderTeam(name) {
+  currentTeam = name;
+  document.querySelectorAll('.team-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.team === name);
+  });
+
+  const isGeral = name === 'Geral';
+  const t = isGeral ? GERAL : DATA.teams[name];
+  const avg = avgScore(t.ratings);
+
+  // Find specific indicators
+  const findRating = (kw) => t.ratings.find(r => (r.original_label || '').toLowerCase().includes(kw));
+  const entrosRow = findRating('entrosamento da equipe');
+  const entrosPct = entrosRow ? satisfactionScore(entrosRow.counts) : avg;
+  const espRow = findRating('espiritualidade no retiro');
+  const espPct = espRow ? satisfactionScore(espRow.counts) : avg;
+
+  const statsLabel = isGeral ? 'Respostas totais' : 'Respostas';
+  const statsFoot = isGeral ? 'dirigentes nas 4 equipes' : `dirigentes do ${name}`;
+
+  renderStats(document.getElementById('team-stats'), [
+    { label: statsLabel, value: t.total, foot: statsFoot, style: 'accent' },
+    { label: 'Aprovação geral', value: avg + '%', foot: 'média entre todos os itens avaliados' },
+    { label: 'Entrosamento', value: entrosPct + '%', foot: 'aprovação no entrosamento da equipe' },
+    { label: 'Espiritualidade', value: espPct + '%', foot: 'aprovação da espiritualidade no retiro', style: 'pink' },
+  ]);
+
+  // Ratings
+  const rc = document.getElementById('team-ratings');
+  rc.innerHTML = '';
+  const div = document.createElement('div');
+  div.className = 'rating-group';
+  const sub = isGeral
+    ? 'Indicadores consolidados das 4 equipes (Corredor, Alicerce, Atletas e Anjos)'
+    : `Avaliação de cada aspecto pela equipe ${name}`;
+  div.innerHTML = `
+    <h3 class="rating-group-title">Indicadores quantitativos</h3>
+    <p class="rating-group-sub">${sub}</p>
+    ${t.ratings.map(renderRatingRow).join('')}
+  `;
+  rc.appendChild(div);
+
+  // Title
+  document.getElementById('team-qbt-title').textContent = isGeral
+    ? 'O que ouvimos das equipes'
+    : `O que ouvimos do ${name}`;
+
+  // QBT
+  if (isGeral) {
+    renderQBT('team-qbt', t.synth, {
+      que_bom_grouped: t.grouped_que_bom,
+      que_pena_grouped: t.grouped_que_pena,
+      que_tal_grouped: t.grouped_que_tal,
+    }, 'geral');
+  } else {
+    renderQBT('team-qbt', t.synth, {
+      que_bom: t.que_bom,
+      que_pena: t.que_pena,
+      que_tal: t.que_tal,
+    }, 'team', name);
+  }
+}
+
+// ============== QBT Cards ==============
+function renderQBT(containerId, synth, full, kind, teamName) {
+  const c = document.getElementById(containerId);
+  c.innerHTML = '';
+
+  // Build cards differently based on kind
+  let cards;
+  if (kind === 'geral') {
+    const totalCount = (groupedList) => groupedList.reduce((sum, g) => sum + g.items.length, 0);
+    cards = [
+      { tag: 'Que bom...', tagShort: 'Pontos altos', cls: 'bom', bullets: synth.que_bom,
+        grouped: full.que_bom_grouped, fullCount: totalCount(full.que_bom_grouped), isGrouped: true },
+      { tag: 'Que pena...', tagShort: 'Pontos de atenção', cls: 'pena', bullets: synth.que_pena,
+        grouped: full.que_pena_grouped, fullCount: totalCount(full.que_pena_grouped), isGrouped: true },
+      { tag: 'Que tal...', tagShort: 'Sugestões', cls: 'tal', bullets: synth.que_tal,
+        grouped: full.que_tal_grouped, fullCount: totalCount(full.que_tal_grouped), isGrouped: true },
+    ];
+  } else {
+    cards = [
+      { tag: 'Que bom...', tagShort: 'Pontos altos', cls: 'bom', bullets: synth.que_bom,
+        full: full.que_bom || full.cursistas_open, fullCount: (full.que_bom || full.cursistas_open).length, isGrouped: false },
+      { tag: 'Que pena...', tagShort: 'Pontos de atenção', cls: 'pena', bullets: synth.que_pena,
+        full: full.que_pena || full.cursistas_open, fullCount: (full.que_pena || full.cursistas_open).length, isGrouped: false },
+      { tag: 'Que tal...', tagShort: 'Sugestões', cls: 'tal', bullets: synth.que_tal,
+        full: full.que_tal || full.cursistas_open, fullCount: (full.que_tal || full.cursistas_open).length, isGrouped: false },
+    ];
+  }
+
+  cards.forEach((card) => {
+    const div = document.createElement('div');
+    div.className = `qbt-card ${card.cls}`;
+    div.tabIndex = 0;
+    div.setAttribute('role', 'button');
+    div.innerHTML = `
+      <div class="qbt-head">
+        <span class="qbt-tag">${card.tagShort}</span>
+      </div>
+      <div class="qbt-title">${card.tag}</div>
+      <div class="qbt-count">${card.bullets.length} pontos principais</div>
+      <ul class="qbt-list">
+        ${card.bullets.map(b => `<li>${b}</li>`).join('')}
+      </ul>
+      <div class="qbt-foot">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        Clique para ler as ${card.fullCount} respostas na íntegra
+      </div>
+    `;
+    div.addEventListener('click', () => openModal(card, kind, teamName));
+    div.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card, kind, teamName); } });
+    c.appendChild(div);
+  });
+}
+
+// ============== Modal ==============
+const modalBg = document.getElementById('modal-bg');
+function openModal(card, kind, teamName) {
+  document.getElementById('modal-head').className = 'modal-head ' + card.cls;
+  document.getElementById('modal-tag').textContent = card.tagShort;
+  document.getElementById('modal-title').textContent = card.tag;
+  let subText = '';
+  if (kind === 'cursistas') subText = `Respostas dos cursistas — ${card.fullCount} comentários abertos`;
+  else if (kind === 'geral') subText = `Respostas consolidadas das 4 equipes — ${card.fullCount} comentários`;
+  else subText = `Respostas da equipe ${teamName} — ${card.fullCount} comentários`;
+  document.getElementById('modal-sub').textContent = subText;
+
+  const body = document.getElementById('modal-body');
+  body.innerHTML = '';
+
+  if (card.isGrouped) {
+    card.grouped.forEach(group => {
+      if (!group.items.length) return;
+      const header = document.createElement('div');
+      header.className = 'modal-group-header ' + card.cls;
+      header.innerHTML = `<span class="modal-group-name">${group.team}</span><span class="modal-group-count">${group.items.length} ${group.items.length === 1 ? 'resposta' : 'respostas'}</span>`;
+      body.appendChild(header);
+      group.items.forEach((r, i) => {
+        const div = document.createElement('div');
+        div.className = 'response-item ' + card.cls;
+        div.innerHTML = `<span class="response-num">${String(i+1).padStart(2,'0')}</span>${escapeHtml(r)}`;
+        body.appendChild(div);
+      });
+    });
+  } else {
+    card.full.forEach((r, i) => {
+      const div = document.createElement('div');
+      div.className = 'response-item ' + card.cls;
+      div.innerHTML = `<span class="response-num">${String(i+1).padStart(2,'0')}</span>${escapeHtml(r)}`;
+      body.appendChild(div);
+    });
+  }
+  modalBg.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  modalBg.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+document.getElementById('modal-close').addEventListener('click', closeModal);
+modalBg.addEventListener('click', (e) => { if (e.target === modalBg) closeModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+// ============== Tooltip system ==============
+const segTooltip = document.createElement('div');
+segTooltip.className = 'seg-tooltip';
+document.body.appendChild(segTooltip);
+
+document.addEventListener('mouseover', (e) => {
+  const seg = e.target.closest('.seg');
+  if (seg && seg.dataset.tip) {
+    const [concept, stats, cls] = seg.dataset.tip.split('|');
+    segTooltip.innerHTML = `
+      <span class="tip-concept"><span class="tip-dot"></span>${concept}</span>
+      <span class="tip-stats">${stats}</span>
+    `;
+    segTooltip.className = 'seg-tooltip ' + cls;
+    const rect = seg.getBoundingClientRect();
+    segTooltip.style.left = (rect.left + rect.width / 2) + 'px';
+    segTooltip.style.top = rect.top + 'px';
+    requestAnimationFrame(() => segTooltip.classList.add('show'));
+  }
+});
+document.addEventListener('mouseout', (e) => {
+  if (e.target.closest('.seg')) {
+    segTooltip.classList.remove('show');
+  }
+});
+window.addEventListener('scroll', () => segTooltip.classList.remove('show'), true);
+
+// ============== Tabs ==============
+document.querySelectorAll('.tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+});
+document.querySelectorAll('.team-btn').forEach(btn => {
+  btn.addEventListener('click', () => renderTeam(btn.dataset.team));
+});
+
+// ============== Init ==============
+renderCursistas();
+renderTeam('Geral');
+</script>
+
+</body>
+</html>
